@@ -1,0 +1,29 @@
+<section ng-controller="InsightsController">
+  <div class="page-header">
+    <h1>New Insight</h1>
+  </div>
+  <div class="col-md-12">
+    <form name="insightForm" class="form-horizontal" ng-submit="create(insightForm.$valid)" novalidate>
+      <fieldset>
+        <div class="form-group">
+          <label for="content">content</label>
+          <textarea name="content" ng-model="content" id="content" class="form-control" cols="30" rows="10" placeholder="Insight"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="title">Content Title</label>
+          <input name="title" ng-model="title" id="title" class="form-control" placeholder="Content Title">
+        </div>
+        <div class="form-group">
+          <label for="orig_url">Original URL</label>
+          <input name="orig_url" ng-model="orig_url" id="orig_url" class="form-control" placeholder="Original URL">
+        </div>
+        <div class="form-group">
+          <input type="submit" class="btn btn-default">
+        </div>
+        <div ng-show="error" class="text-danger">
+          <strong ng-bind="error"></strong>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</section>

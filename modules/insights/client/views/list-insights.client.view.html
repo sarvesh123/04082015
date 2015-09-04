@@ -1,0 +1,29 @@
+<section ng-controller="InsightsController" ng-init="find()">
+  <div class="page-header">
+    <h1>My Insights</h1>
+  </div>
+
+  <table class="table">
+    <tr ng-if="insights.length">
+      <th>Date</th>
+      <th>Insight</th>
+      <th>Content Title</th>
+      <th>Insighter URL</th>
+      <th>Original URL</th>
+      <th>Views</th>
+      <th>Clicks</th>
+    </tr>
+
+    <tr ng-repeat="insight in insights" ui-sref="insights.view({insightId: insight._id})">
+      <td ng-bind="insight.created | date:'mediumDate'"></td>
+      <td ng-bind="insight.content | limitTo:200" ng-maxlength="50" ui-sref="insights.view({insightId: insight._id})"></td>
+      <td ng-bind="insight.title"></td>
+      <td >Bit.ly/weihzxx</td>
+      <td ng-bind="insight.orig_url"></td>
+      <td>78</td>
+      <td>4</td>
+    </tr>
+
+  </table>
+
+</section>
