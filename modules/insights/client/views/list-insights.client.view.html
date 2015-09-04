@@ -4,7 +4,15 @@
   </div>
 
   <table class="table">
+
+    <tr>
+      <td><input type="checkbox" ></td>
+      <td><button ng-click="multi_edit()">Edit</button></td>
+      <td><button ng-click="multi_delete()">Delete</button></td>
+    </tr>
+
     <tr ng-if="insights.length">
+      <th></th>
       <th>Date</th>
       <th>Insight</th>
       <th>Content Title</th>
@@ -14,7 +22,8 @@
       <th>Clicks</th>
     </tr>
 
-    <tr ng-repeat="insight in insights" ui-sref="insights.view({insightId: insight._id})">
+    <tr ng-repeat="insight in insights">
+      <td> <input type="checkbox" ng-model="slt[insight._id]"> </td>
       <td ng-bind="insight.created | date:'mediumDate'"></td>
       <td ng-bind="insight.content | limitTo:200" ng-maxlength="50" ui-sref="insights.view({insightId: insight._id})" class="hover"></td>
       <td ng-bind="insight.title"></td>
