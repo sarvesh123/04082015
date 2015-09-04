@@ -16,7 +16,7 @@
 
     <tr ng-repeat="insight in insights" ui-sref="insights.view({insightId: insight._id})">
       <td ng-bind="insight.created | date:'mediumDate'"></td>
-      <td ng-bind="insight.content | limitTo:200" ng-maxlength="50" ui-sref="insights.view({insightId: insight._id})"></td>
+      <td ng-bind="insight.content | limitTo:200" ng-maxlength="50" ui-sref="insights.view({insightId: insight._id})" class="hover"></td>
       <td ng-bind="insight.title"></td>
       <td >Bit.ly/weihzxx</td>
       <td ng-bind="insight.orig_url"></td>

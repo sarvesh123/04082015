@@ -15,8 +15,6 @@ exports.create = function (req, res) {
   var insight = new Insight(req.body);
   insight.user = req.user;
 
-  console.log(req.body)
-
   insight.save(function (err) {
     if (err) {
       return res.status(400).send({
