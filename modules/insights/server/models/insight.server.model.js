@@ -31,6 +31,10 @@ var InsightSchema = new Schema({
     trim: true,
     required: 'This URL cannot be blank'
   },
+  views: {
+    type: String,
+    default: 1
+  },
   user: {
     type: Schema.ObjectId,
     ref: 'User'
