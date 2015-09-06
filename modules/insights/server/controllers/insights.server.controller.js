@@ -39,7 +39,8 @@ exports.read = function (req, res) {
 exports.update = function (req, res) {
   var insight = req.insight;
 
-  insight.insight = req.body.insight;
+  insight.title = req.body.title;
+  insight.content = req.body.content;
 
   insight.save(function (err) {
     if (err) {

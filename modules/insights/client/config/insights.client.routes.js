@@ -31,6 +31,13 @@ angular.module('insights').config(['$stateProvider',
         data: {
           roles: ['user', 'admin']
         }
+      })
+      .state('insights.preview', {
+        url: '/:insightId/preview',
+        templateUrl: 'modules/insights/client/views/preview-insight.client.view.html',
+        data: {
+          roles: ['user', 'admin']
+        }
       });
   }
 ]);

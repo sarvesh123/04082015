@@ -1,8 +1,8 @@
 'use strict';
 
 // Insights controller
-angular.module('insights').controller('InsightsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Insights',
-  function ($scope, $stateParams, $location, Authentication, Insights) {
+angular.module('insights').controller('InsightsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Insights', '$sce', 
+  function ($scope, $stateParams, $location, Authentication, Insights, $sce) {
     $scope.authentication = Authentication;
 
     // Create new Insight
@@ -24,7 +24,7 @@ angular.module('insights').controller('InsightsController', ['$scope', '$statePa
 
       // Redirect after save
       insight.$save(function (response) {
-        $location.path('insights/' + response._id);
+        $location.path('insights/' + response._id + '/edit');
 
         // Clear form fields
         $scope.insight = '';
@@ -78,7 +78,19 @@ angular.module('insights').controller('InsightsController', ['$scope', '$statePa
     $scope.findOne = function () {
       $scope.insight = Insights.get({
         insightId: $stateParams.insightId
+      }, function (insightDetails) {
+        $scope.rawHtml = $sce.trustAsHtml(insightDetails.orig_url);
+      });
+      console.log($scope.insight);
+    };
+
+    $scope.autoSave = function () {
+      var insight = $scope.insight;
+      insight.$update(function () {
+      }, function (errorResponse) {
+        $scope.error = errorResponse.data.message;
       });
     };
+
   }
 ]);

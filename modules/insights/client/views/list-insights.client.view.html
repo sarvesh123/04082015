@@ -3,7 +3,7 @@
     <h1>My Insights</h1>
   </div>
 
-  <table class="table">
+  <table class="table" ng-if="insights.length" class="ng-hide">
 
     <tr>
       <td><input type="checkbox" ></td>
@@ -34,5 +34,9 @@
     </tr>
 
   </table>
+
+  <div class="alert alert-warning text-center" ng-if="insights.$resolved && !insights.length">
+    No insights yet, why don't you <a ui-sref="insights.create">create one</a>?
+  </div>
 
 </section>

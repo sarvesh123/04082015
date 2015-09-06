@@ -1,28 +1,53 @@
 <section ng-controller="InsightsController" ng-init="findOne()">
+
+  <p>&nbsp;</p>
+
+  <form name="insightForm" class="form-horizontal" ng-submit="create(insightForm.$valid)" novalidate>
+        <fieldset>
+          <div class="form-group">
+            <input name="orig_url" ng-model="orig_url" id="orig_url" class="form-control" placeholder="Type URL of content (e.g. www.techcrunch.com/article)">
+          </div>
+          <div class="form-group">
+            <input type="submit" class="btn btn-default" value="Create Insight">
+          </div>
+          <div ng-show="error" class="text-danger">
+            <strong ng-bind="error"></strong>
+          </div>
+        </fieldset>
+  </form>
+
   <div class="page-header">
-    <h1>Edit Insight</h1>
+    <span>Create new Insight</span>&nbsp;<a href="/">x</a>
   </div>
-  <div class="col-md-12">
+  <div class="col-xs-3">
     <form name="insightForm" class="form-horizontal" ng-submit="update(insightForm.$valid)" novalidate>
       <fieldset>
+        <div class="form-group">
+          <button ui-sref="insights.preview({insightId: insight._id})">Preview</button>
+          <input type="submit" value="Publish" class="btn btn-default">
+        </div>
+
+        <div class="form-group">
+          <img ng-src="{{authentication.user.profileImageURL}}" alt="{{authentication.user.displayName}}"/><br />
+          <span ng-bind="authentication.user.displayName"></span>
+        </div>
+
         <div class="form-group" show-errors>
-          <label for="title">Title</label>
           <input name="title" type="text" ng-model="insight.title" id="title" class="form-control" placeholder="Title" required>
           <div ng-messages="insightForm.title.$error" role="alert">
             <p class="help-block error-text" ng-message="required">Insight title is required.</p>
           </div>
         </div>
         <div class="form-group">
-          <label for="insight">Insight</label>
-          <textarea name="insight" ng-model="insight.insight" id="insight" class="form-control" cols="30" rows="10" placeholder="Insight"></textarea>
+          <textarea name="content" ng-model="insight.content" id="content" class="form-control" cols="30" rows="10" placeholder="Share an update" ng-keyup="autoSave()"></textarea>
         </div>
-        <div class="form-group">
-          <input type="submit" value="Update" class="btn btn-default">
-        </div>
+        
         <div ng-show="error" class="text-danger">
           <strong ng-bind="error"></strong>
         </div>
       </fieldset>
     </form>
   </div>
+
+  <div ng-bind-html-unsafe="rawHtml" class="col-xs-9"><div>
 </section>

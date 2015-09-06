@@ -7,7 +7,7 @@ var mongoose = require('mongoose'),
   Schema = mongoose.Schema;
 
 /**
- * Article Schema
+ * Insight Schema
  */
 var InsightSchema = new Schema({
   created: {
@@ -23,13 +23,12 @@ var InsightSchema = new Schema({
     type: String,
     default: '',
     trim: true,
-    required: 'Title cannot be blank'
   },
   orig_url: {
     type: String,
     default: '',
     trim: true,
-    required: 'This URL cannot be blank'
+    required: 'URL cannot be blank'
   },
   views: {
     type: String,

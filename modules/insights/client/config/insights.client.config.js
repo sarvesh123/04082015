@@ -13,7 +13,7 @@ angular.module('insights').run(['Menus',
 
     // Add the dropdown list item
     Menus.addSubMenuItem('topbar', 'insights', {
-      title: 'List Insights',
+      title: 'My Insights',
       state: 'insights.list'
     });
 

@@ -1,0 +1,22 @@
+<section ng-controller="InsightsController" ng-init="findOne()">
+  <div class="col-xs-3">
+
+    <div class="form-group">
+          <img ng-src="{{authentication.user.profileImageURL}}" alt="{{authentication.user.displayName}}"/><br />
+          <span ng-bind="authentication.user.displayName"></span>
+    </div>
+
+    <div class="form-group">
+      <p ng-model="insight.content">{{insight.content}}</p>
+    </div>
+  </div>
+  
+  <div class="col-xs-9">
+    <div>
+      <div class="form-group">
+        <button ui-sref="insights.edit({insightId: insight._id})">Edit</button>
+        <input ng-submit="update(insightForm.$valid)" type="submit" value="Publish" class="btn btn-default">
+      </div>
+    </div>
+    <div ng-bind-html-unsafe="rawHtml"></div>
+</section>
