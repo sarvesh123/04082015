@@ -24,7 +24,7 @@
       <fieldset>
         <div class="form-group">
           <button ui-sref="insights.preview({insightId: insight._id})">Preview</button>
-          <input type="submit" value="Publish" class="btn btn-default">
+          <button type="button" class="btn btn-default" ng-click="publish_popup('lg', insight)">Publish</button>
         </div>
 
         <div class="form-group">
@@ -41,7 +41,7 @@
         <div class="form-group">
           <textarea name="content" ng-model="insight.content" id="content" class="form-control" cols="30" rows="10" placeholder="Share an update" ng-keyup="autoSave()"></textarea>
         </div>
-        
+
         <div ng-show="error" class="text-danger">
           <strong ng-bind="error"></strong>
         </div>

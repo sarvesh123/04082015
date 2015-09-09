@@ -1,8 +1,8 @@
 'use strict';
 
 // Insights controller
-angular.module('insights').controller('InsightsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Insights', '$sce', 
-  function ($scope, $stateParams, $location, Authentication, Insights, $sce) {
+angular.module('insights').controller('InsightsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Insights', '$sce', '$modal', '$log', 
+  function ($scope, $stateParams, $location, Authentication, Insights, $sce, $modal, $log) {
     $scope.authentication = Authentication;
 
     // Create new Insight
@@ -92,5 +92,38 @@ angular.module('insights').controller('InsightsController', ['$scope', '$statePa
       });
     };
 
+    $scope.publish_popup = function (size, insight) {
+        var modalInstance = $modal.open({
+          animation: $scope.animationsEnabled,
+          templateUrl: 'modules/insights/client/views/publish-lightbox-insight.client.view.html',
+          controller: 'ModalInstanceCtrl',
+          size: size,
+          resolve: {
+            insight: function () {
+              return $scope.insight;
+            }
+          }
+        });
+
+        modalInstance.result.then(function (selectedItem) {
+          $scope.selected = selectedItem;
+        }, function () {
+          $log.info('Modal dismissed at: ' + new Date());
+        });
+    };
+
   }
 ]);
+
+// Please note that $modalInstance represents a modal window (instance) dependency.
+// It is not the same as the $modal service used above.
+
+angular.module('ui.bootstrap').controller('ModalInstanceCtrl', function ($scope, $modalInstance, insight) {
+
+  $scope.insight = insight;
+
+  $scope.close = function () {
+    $modalInstance.dismiss('cancel');
+  };
+
+});
