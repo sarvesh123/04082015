@@ -79,9 +79,9 @@ angular.module('insights').controller('InsightsController', ['$scope', '$statePa
       $scope.insight = Insights.get({
         insightId: $stateParams.insightId
       }, function (insightDetails) {
-        $scope.rawHtml = $sce.trustAsHtml(insightDetails.orig_url);
+        var key = '38b6d4e2bb8b4c589a15b0e9e79a8a39';
+        $scope.embedURL = 'http://api.embed.ly/1/oembed?key=' + key + '&url=http://www.sitepoint.com/preventing-code-rot-101-unit-testing/';
       });
-      console.log($scope.insight);
     };
 
     $scope.autoSave = function () {
@@ -93,6 +93,10 @@ angular.module('insights').controller('InsightsController', ['$scope', '$statePa
     };
 
     $scope.publish_popup = function (size, insight) {
+
+      insight.url_view = $location.$$protocol + '://' + $location.$$host + ':' + $location.$$port 
+        + '/insights/' + insight._id;
+
         var modalInstance = $modal.open({
           animation: $scope.animationsEnabled,
           templateUrl: 'modules/insights/client/views/publish-lightbox-insight.client.view.html',
