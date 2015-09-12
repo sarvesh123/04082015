@@ -94,8 +94,8 @@ angular.module('insights').controller('InsightsController', ['$scope', '$statePa
 
     $scope.publish_popup = function (size, insight) {
 
-      insight.url_view = $location.$$protocol + '://' + $location.$$host + ':' + $location.$$port 
-        + '/insights/' + insight._id;
+      insight.url_view = $location.$$protocol + '://' + $location.$$host + ':' + $location.$$port + 
+        '/insights/' + insight._id;
 
         var modalInstance = $modal.open({
           animation: $scope.animationsEnabled,
