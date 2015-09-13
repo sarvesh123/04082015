@@ -42,19 +42,19 @@ a:hover .header-profile-image {
   right: 0;
   bottom: 0;
   margin: auto;
-  width: 60%;
   height: 100px;
+  max-width: 700px;
 }
 .custom-help-block {
   font-style: italic;
   padding-left: 20px;
 }
 .orig-url {
-  width: 64% !important;
   border: 1px solid #0099FF;
+  width: 100% !important;
 }
 .no-border-radius {
-  border-radius: 0 !important;
+  border-radius: 0;
 }
 .light-blue-button {
   color: #ffffff;
