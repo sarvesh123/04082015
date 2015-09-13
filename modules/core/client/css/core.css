@@ -13,10 +13,11 @@
 }
 .header-profile-image {
   opacity: 0.8;
-  height: 28px;
-  width: 28px;
+  height: 35px;
+  width: 35px;
   border-radius: 50%;
-  margin-right: 5px;
+  margin-left: 10px;
+  box-shadow: 0 0 6px 2px #ccc;
 }
 .open .header-profile-image,
 a:hover .header-profile-image {
@@ -62,4 +63,11 @@ a:hover .header-profile-image {
 }
 .create-insight-button:hover {
   color: #ffffff;
+}
+.navbar-toggle {
+  display: block;
+  float: left;
+}
+.navbar-toggle span {
+  background-color: gray;
 }
