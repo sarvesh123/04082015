@@ -1,0 +1,43 @@
+<div style="padding:15px;">
+    <button ng-click="cancel()" type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+
+    <div class="center-block">
+        <div class="form-group form-inline">
+            <label for="orig_url">Link to share:</label>
+            &nbsp;&nbsp;&nbsp;&nbsp;<input type="text" class="form-control" id="orig_url" value="{{insight.url_view}}" disabled>
+        </div>
+    </div>
+
+     <div class="col-xs-12">
+        <div class="col-xs-1"></div>
+        <div class="col-xs-3"><hr></div>
+        <div class="col-xs-1">OR</div>
+        <div class="col-xs-5"><hr></div>
+        <div class="col-xs-2"></div>
+     </div>
+
+    <form>
+
+        <div class="form-group">
+            <label for="content">Share insighter via:</label>
+            <textarea class="form-control" id="content" ng-bind="insight.content | limitTo:100"></textarea>
+        </div>
+
+        <!--the original view-->
+        <div class="col-xs-4"></div>
+        <div class="col-xs-8"></div>
+
+        <div>
+            <div class="col-xs-3"><input type="checkbox">&nbsp;LinkedIn</div>
+            <div class="col-xs-3"><input type="checkbox">&nbsp;Twitter</div>
+            <div class="col-xs-3"><input type="checkbox">&nbsp;Google</div>
+            <div class="col-xs-3"><input type="checkbox">&nbsp;Facebook</div>
+        </div>
+        <br /><br />
+        <div class="form-group text-right">
+          <button type="button" class="btn btn-default" ui-sref="insights.edit({insightId: insight._id})">Cancel</button>
+          <button type="button" class="btn btn-primary" ng-click="update()">Publish</button>
+        </div>
+
+    </form>
+</div>
