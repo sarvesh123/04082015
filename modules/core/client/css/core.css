@@ -1,5 +1,9 @@
+body, html {
+  height: 100%;
+}
 .content {
   margin-top: 50px;
+  height: 100%;
 }
 .undecorated-link:hover {
   text-decoration: none;
@@ -37,7 +41,7 @@ a:hover .header-profile-image {
   display: inline;
 }
 .home-create-insight {
-  position: absolute;
+  position: relative;
   top: 0;
   left: 0;
   right: 0;
@@ -67,7 +71,61 @@ a:hover .header-profile-image {
 .navbar-toggle {
   display: block;
   float: left;
+  margin-right: 0px;
 }
 .navbar-toggle span {
-  background-color: gray;
+  background-color: #D9A275;
+  height: 4px !important;
+  border-radius: 10px !important;
+}
+.content section {
+  position: relative;
+  float: left;
+  height: 100%;
+}
+.side-menu {
+  background-color: #F9F9F9;
+}
+.clean-hr {
+  border-color: gray;
+  margin: 0;
+}
+.overlay-top-nav {
+  margin-top: -50px;
+  background-color: #F9F9F9;
+  width: 100%;
+}
+.side-menu-bottom {
+  padding: 20px 30px;
+}
+.side-menu-bottom > span {
+  font-weight: bold;
+}
+.sub-section {
+  padding-top: 10px;
+  list-style: none;
+  line-height: 22px;
+  padding-left: 18px;
+}
+.pro {
+  color: #ff0000;
+  font-style: italic;
+  font-size: xx-small;
+}
+.site-title, .site-title:hover {
+  font-weight: bold;
+  color: #359ECF;
+  font-size: 24px;
+  margin: 15px;
+  padding: 7px;
+  line-height: 20px;
+  float: left;
+  text-decoration: none;
+  border: 1px solid #359ECF;
+}
+.navbar-header {
+  padding-left: 10px;
+}
+.top-header {
+  padding-right: 50px;
 }
