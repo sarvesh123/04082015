@@ -77,7 +77,7 @@ a:hover .header-profile-image {
   border-radius: 10px !important;
 }
 .side-menu {
-  background-color: #F9F9F9;
+  background-color: #ffffff;
   float: left;
   width: 215px;
   height: 100%;
@@ -93,6 +93,8 @@ a:hover .header-profile-image {
 .side-menu-bottom {
   float: left;
   padding: 20px 30px;
+  height: 90%;
+  width: 100%;
 }
 .side-menu-bottom > span {
   font-weight: bold;
@@ -137,4 +139,13 @@ a:hover .header-profile-image {
   left: 0;
   bottom: 0;
   position: absolute;
+}
+.shift-left {
+  margin-left: -125px;
+}
+.bg-white {
+  background-color: #ffffff;
+}
+.bg-gray {
+  background-color: #F9F9F9;
 }
