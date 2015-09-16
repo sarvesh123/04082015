@@ -61,6 +61,7 @@ a:hover .header-profile-image {
 .light-blue-button {
   color: #ffffff;
   background-color: #0099FF;
+  width: 116px;
 }
 .create-insight-button:hover {
   color: #ffffff;
@@ -139,6 +140,7 @@ a:hover .header-profile-image {
   left: 0;
   bottom: 0;
   position: absolute;
+  padding: 0 20px;
 }
 .shift-left {
   margin-left: -125px;
