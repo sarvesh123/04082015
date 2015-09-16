@@ -1,7 +1,7 @@
     <form name="insightForm" ng-submit="create(insightForm.$valid)" novalidate class="form-inline create-insight-form" ng-controller="InsightsController">
       <p class="help-block custom-help-block">Create a New Insight - Boost your Identity and Social Leads</p>
       <div class="form-group col-sm-9" style="padding: 0px;">
-        <input type="text" class="form-control orig-url no-border-radius" id="orig_url" placeholder="Type URL of content (e.g. www.techcrunch.com/article)">
+        <input type="text" class="form-control orig-url no-border-radius" id="orig_url" ng-model="orig_url" placeholder="Type URL of content (e.g. www.techcrunch.com/article)">
        </div>
       <button type="submit" class="btn light-blue-button no-border-radius create-insight-button col-sm-3">Create Insight</button>
 
