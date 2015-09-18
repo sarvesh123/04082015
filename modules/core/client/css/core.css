@@ -151,3 +151,19 @@ a:hover .header-profile-image {
 .bg-gray {
   background-color: #F9F9F9;
 }
+.link-color {
+  color: #000000;
+}
+.header-form {
+  padding-top: 15px;
+  width: auto;
+}
+.header-form input.form-control {
+  width: 300px;
+  float: left;
+  border: 1px solid #359ECF;
+  border-right: none;
+}
+.header-form button {
+  border: 1px solid #359ECF;
+}

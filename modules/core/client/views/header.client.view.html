@@ -1,39 +1,49 @@
 <div ng-controller="HeaderController">
   <nav class="collapse navbar-collapse" collapse="!isCollapsed" role="navigation">
-    <ul class="nav navbar-nav navbar-right" ng-hide="authentication.user">
-      <li ui-sref-active="active">
-        <a ui-sref="authentication.signup">Sign Up</a>
-      </li>
-      <li class="divider-vertical"></li>
-      <li ui-sref-active="active">
-        <a ui-sref="authentication.signin">Sign In</a>
-      </li>
-    </ul>
-    <ul class="nav navbar-nav navbar-right" ng-show="authentication.user">
-      <li class="dropdown" dropdown>
-        <a class="dropdown-toggle user-header-dropdown-toggle" dropdown-toggle role="button" style="color:#737373;">
-          <span ng-bind="authentication.user.displayName"></span> <b class="caret" style="color: #000000;"></b>
-          <img ng-src="{{authentication.user.profileImageURL}}" alt="{{authentication.user.displayName}}" class="header-profile-image" />
-        </a>
-        <ul class="dropdown-menu" role="menu">
-          <li ui-sref-active="active">
-            <a ui-sref="settings.profile">Edit Profile</a>
-          </li>
-          <li ui-sref-active="active">
-            <a ui-sref="settings.picture">Change Profile Picture</a>
-          </li>
-          <li ui-sref-active="active" ng-show="authentication.user.provider === 'local'">
-            <a ui-sref="settings.password">Change Password</a>
-          </li>
-          <li ui-sref-active="active">
-            <a ui-sref="settings.accounts">Manage Social Accounts</a>
-          </li>
-          <li class="divider"></li>
-          <li>
-            <a href="/api/auth/signout" target="_self">Signout</a>
-          </li>
-        </ul>
-      </li>
-    </ul>
+
+    <div class="col-xs-6 header-form" ng-show="showHeaderForm($state)">
+      <form name="insightForm" ng-submit="create(insightForm.$valid)" novalidate ng-controller="InsightsController">
+        <input type="text" id="orig_url" ng-model="orig_url" placeholder="Enter a URL (e.g. www.techcrunch.com)" class="form-control no-border-radius">
+        <button type="submit" class="btn btn-default no-border-radius">Create Insight</button>
+      </form>
+    </div>
+
+    <div class="col-xs-6 pull-right">
+      <ul class="nav navbar-nav navbar-right" ng-hide="authentication.user">
+        <li ui-sref-active="active">
+          <a ui-sref="authentication.signup">Sign Up</a>
+        </li>
+        <li class="divider-vertical"></li>
+        <li ui-sref-active="active">
+          <a ui-sref="authentication.signin">Sign In</a>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right" ng-show="authentication.user">
+        <li class="dropdown" dropdown>
+          <a class="dropdown-toggle user-header-dropdown-toggle" dropdown-toggle role="button" style="color:#737373;">
+            <span ng-bind="authentication.user.displayName"></span> <b class="caret" style="color: #000000;"></b>
+            <img ng-src="{{authentication.user.profileImageURL}}" alt="{{authentication.user.displayName}}" class="header-profile-image" />
+          </a>
+          <ul class="dropdown-menu" role="menu">
+            <li ui-sref-active="active">
+              <a ui-sref="settings.profile">Edit Profile</a>
+            </li>
+            <li ui-sref-active="active">
+              <a ui-sref="settings.picture">Change Profile Picture</a>
+            </li>
+            <li ui-sref-active="active" ng-show="authentication.user.provider === 'local'">
+              <a ui-sref="settings.password">Change Password</a>
+            </li>
+            <li ui-sref-active="active">
+              <a ui-sref="settings.accounts">Manage Social Accounts</a>
+            </li>
+            <li class="divider"></li>
+            <li>
+              <a href="/api/auth/signout" target="_self">Signout</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
   </nav>
 </div>

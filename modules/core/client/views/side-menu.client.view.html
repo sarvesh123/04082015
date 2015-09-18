@@ -12,12 +12,12 @@
   <span>MENU</span>
   <hr class="clean-hr">
   <ul class="sub-section">
-    <li>Create new Insight</li>
-    <li>My Insights</li>
-    <li>Profile (Edit)</li>
+    <li><a ui-sref="home()" class="link-color">Create new Insight</li>
+    <li><a ui-sref="insights.list()" class="link-color">My Insights</a></li>
+    <li><a ui-sref="settings.profile()" class="link-color">Profile (Edit)</a></li>
   </ul>
 
-    <br /><br />
+  <br /><br />
 
   <ul class="sub-section">
     <li>Lead Capturing <b class="caret" style="color: #000000;"></b> <span class="pro">PRO</span></li>
@@ -27,4 +27,37 @@
       <li>My Leads</span>
     </ul>
   </ul>
+
+  <div class="page-header">
+    <span>Create new Insight</span>&nbsp;<a href="/">x</a>
+  </div>
+  <div class="col-xs-3">
+    <form name="insightForm" class="form-horizontal" ng-submit="update(insightForm.$valid)" novalidate>
+      <fieldset>
+        <div class="form-group">
+          <button ui-sref="insights.preview({insightId: insight._id})">Preview</button>
+          <button type="button" class="btn btn-default" ng-click="publish_popup('lg', insight)">Publish</button>
+        </div>
+
+        <div class="form-group">
+          <img ng-src="{{authentication.user.profileImageURL}}" alt="{{authentication.user.displayName}}"/><br />
+          <span ng-bind="authentication.user.displayName"></span>
+        </div>
+
+        <div class="form-group" show-errors>
+          <input name="title" type="text" ng-model="insight.title" id="title" class="form-control" placeholder="Title" required>
+          <div ng-messages="insightForm.title.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Insight title is required.</p>
+          </div>
+        </div>
+        <div class="form-group">
+          <textarea name="content" ng-model="insight.content" id="content" class="form-control" cols="30" rows="10" placeholder="Share an update" ng-keyup="autoSave()"></textarea>
+        </div>
+
+        <div ng-show="error" class="text-danger">
+          <strong ng-bind="error"></strong>
+        </div>
+      </fieldset>
+    </form>
+  </div>
 </div>
