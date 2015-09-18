@@ -8,56 +8,73 @@
     <a ui-sref="home" class="site-title">Insighter</a>
 </div>
 
-<div class="side-menu-bottom ng-class:{'bg-gray':showSideMenu};" ng-show="showSideMenu">
-  <span>MENU</span>
-  <hr class="clean-hr">
-  <ul class="sub-section">
-    <li><a ui-sref="home()" class="link-color">Create new Insight</li>
-    <li><a ui-sref="insights.list()" class="link-color">My Insights</a></li>
-    <li><a ui-sref="settings.profile()" class="link-color">Profile (Edit)</a></li>
-  </ul>
+<div class="side-menu-bottom ng-class:{'bg-gray':showSideMenu};" ng-controller="HeaderController" ng-show="showSideMenu">
 
-  <br /><br />
-
-  <ul class="sub-section">
-    <li>Lead Capturing <b class="caret" style="color: #000000;"></b> <span class="pro">PRO</span></li>
+  <div ng-show="showSidebarDefault($state)">
+    <span>MENU</span>
+    <hr class="clean-hr">
     <ul class="sub-section">
-      <li>Create new Ad</span>
-      <li>My Ads</span>
-      <li>My Leads</span>
+      <li><a ui-sref="home()" class="link-color">Create new Insight</li>
+      <li><a ui-sref="insights.list()" class="link-color">My Insights</a></li>
+      <li><a ui-sref="settings.profile()" class="link-color">Profile (Edit)</a></li>
     </ul>
-  </ul>
 
-  <div class="page-header">
-    <span>Create new Insight</span>&nbsp;<a href="/">x</a>
+    <br /><br />
+
+    <ul class="sub-section">
+      <li>Lead Capturing <b class="caret" style="color: #000000;"></b> <span class="pro">PRO</span></li>
+      <ul class="sub-section">
+        <li>Create new Ad</span>
+        <li>My Ads</span>
+        <li>My Leads</span>
+      </ul>
+    </ul>
   </div>
-  <div class="col-xs-3">
-    <form name="insightForm" class="form-horizontal" ng-submit="update(insightForm.$valid)" novalidate>
-      <fieldset>
-        <div class="form-group">
-          <button ui-sref="insights.preview({insightId: insight._id})">Preview</button>
-          <button type="button" class="btn btn-default" ng-click="publish_popup('lg', insight)">Publish</button>
-        </div>
 
-        <div class="form-group">
-          <img ng-src="{{authentication.user.profileImageURL}}" alt="{{authentication.user.displayName}}"/><br />
-          <span ng-bind="authentication.user.displayName"></span>
-        </div>
-
-        <div class="form-group" show-errors>
-          <input name="title" type="text" ng-model="insight.title" id="title" class="form-control" placeholder="Title" required>
-          <div ng-messages="insightForm.title.$error" role="alert">
-            <p class="help-block error-text" ng-message="required">Insight title is required.</p>
+  <div ng-hide="showSidebarDefault($state)">
+    <div class="edit-title text-center">
+      <span>Create new Insight</span>
+      <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    </div>
+    <div class="text-center">
+      <form name="insightForm" ng-submit="update(insightForm.$valid)" novalidate>
+        <fieldset>
+          <div class="form-group edit-buttons text-center">
+            <button type="button" class="btn btn-default no-border-radius" ui-sref="insights.preview({insightId: insight._id})">Preview</button>
+            <button type="button" class="btn btn-primary no-border-radius" ng-click="publish_popup('lg', insight)">Publish</button>
           </div>
-        </div>
-        <div class="form-group">
-          <textarea name="content" ng-model="insight.content" id="content" class="form-control" cols="30" rows="10" placeholder="Share an update" ng-keyup="autoSave()"></textarea>
-        </div>
 
-        <div ng-show="error" class="text-danger">
-          <strong ng-bind="error"></strong>
-        </div>
-      </fieldset>
-    </form>
+          <div class="form-group">
+            <img class="edit-img" ng-src="{{authentication.user.profileImageURL}}" alt="{{authentication.user.displayName}}"/><br />
+            <span class="edit-profile-name" ng-bind="authentication.user.displayName"></span>
+          </div>
+
+          <div class="form-group" show-errors style="padding: 0 15px;">
+            <input name="title" type="text" ng-model="insight.title" id="title" class="form-control" placeholder="Title" required>
+            <div ng-messages="insightForm.title.$error" role="alert">
+              <p class="help-block error-text" ng-message="required">Insight title is required.</p>
+            </div>
+          </div>
+          <div class="form-group" style="padding: 0 15px;">
+            <textarea name="content" ng-model="insight.content" id="content" class="form-control" cols="30" rows="8" placeholder="Share an update" ng-keyup="autoSave()"></textarea>
+          </div>
+
+          <div class="content-type">
+            <span class="glyphicon glyphicon-pencil"><br />Text</span>
+            <span class="glyphicon glyphicon-camera"><br />Photo</span>
+            <span class="glyphicon glyphicon-link"><br />Link</span>
+            <span class="glyphicon glyphicon-facetime-video"><br />Video</span>
+          </div>
+
+          <div ng-show="error" class="text-danger">
+            <strong ng-bind="error"></strong>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+    <section class="related-insights-section text-center">
+      <span>RELATED INSIGHTS</span>
+      <img />
+    </section>
   </div>
 </div>

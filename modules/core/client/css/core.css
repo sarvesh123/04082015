@@ -93,7 +93,7 @@ a:hover .header-profile-image {
 }
 .side-menu-bottom {
   float: left;
-  padding: 20px 30px;
+  padding: 20px 0;
   height: 90%;
   width: 100%;
 }
@@ -166,4 +166,32 @@ a:hover .header-profile-image {
 }
 .header-form button {
   border: 1px solid #359ECF;
+}
+.edit-title {
+  padding: 0 10px 10px 0;
+}
+.edit-title > span {
+  color: #ff0000;
+  font-weight: bold;
+}
+.edit-buttons {
+  background-color: #F5F5F5;
+  padding: 5px 0;
+}
+.edit-img {
+  border-radius: 50%;
+  width: 80px;
+  margin-bottom: 10px;
+}
+.edit-profile-name {
+  text-transform: uppercase;
+  font-weight: bold;
+}
+.related-insights-section {
+  padding: 20px 0;
+  text-transform: uppercase;
+}
+.content-type span {
+  padding: 0 5px;
+  font-size: smaller;
 }
