@@ -10,8 +10,8 @@
 
 <div class="side-menu-bottom ng-class:{'bg-gray':showSideMenu};" ng-controller="HeaderController" ng-show="showSideMenu">
 
-  <div ng-show="showSidebarDefault($state)">
-    <span>MENU</span>
+  <div class="default-sidebar" ng-show="showSidebarDefault($state)">
+    <span class="span-menu">MENU</span>
     <hr class="clean-hr">
     <ul class="sub-section">
       <li><a ui-sref="home()" class="link-color">Create new Insight</li>
