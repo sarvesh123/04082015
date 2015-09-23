@@ -73,7 +73,7 @@ a:hover .header-profile-image {
   margin-top: 13px;
 }
 .navbar-toggle span {
-  background-color: #D9A275;
+  background-color: gray;
   height: 4px !important;
   border-radius: 10px !important;
 }
@@ -200,4 +200,16 @@ a:hover .header-profile-image {
 }
 .span-menu {
   font-weight: bold;
+}
+.yellow-orange {
+  background-color: #D9A275 !important;
+}
+.full-height {
+  height: 100%;
+}
+.main-content section {
+  height: 100%;
+}
+.full-width {
+  width: 100%;
 }

@@ -1,8 +1,8 @@
 'use strict';
 
 // Insights controller
-angular.module('insights').controller('InsightsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Insights', '$sce', '$modal', '$log', 
-  function ($scope, $stateParams, $location, Authentication, Insights, $sce, $modal, $log) {
+angular.module('insights').controller('InsightsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Insights', '$modal', '$log', 
+  function ($scope, $stateParams, $location, Authentication, Insights, $modal, $log) {
     $scope.authentication = Authentication;
 
     // Create new Insight
@@ -78,9 +78,6 @@ angular.module('insights').controller('InsightsController', ['$scope', '$statePa
     $scope.findOne = function () {
       $scope.insight = Insights.get({
         insightId: $stateParams.insightId
-      }, function (insightDetails) {
-        var key = '38b6d4e2bb8b4c589a15b0e9e79a8a39';
-        $scope.embedURL = 'http://api.embed.ly/1/oembed?key=' + key + '&url=http://www.sitepoint.com/preventing-code-rot-101-unit-testing/';
       });
     };
 
@@ -117,7 +114,12 @@ angular.module('insights').controller('InsightsController', ['$scope', '$statePa
     };
 
   }
-]);
+])
+.filter('trusted', ['$sce', function ($sce) {
+    return function(url) {
+        return $sce.trustAsResourceUrl(url);
+    };
+}]);
 
 // Please note that $modalInstance represents a modal window (instance) dependency.
 // It is not the same as the $modal service used above.
