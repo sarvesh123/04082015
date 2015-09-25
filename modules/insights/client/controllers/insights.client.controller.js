@@ -79,6 +79,7 @@ angular.module('insights').controller('InsightsController', ['$scope', '$statePa
       $rootScope.insight = Insights.get({
         insightId: $stateParams.insightId
       });
+      $rootScope.showSideMenu = 1;
     };
 
     $scope.autoSave = function () {

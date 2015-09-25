@@ -21,14 +21,6 @@
 
     <br /><br />
 
-    <ul class="sub-section">
-      <li>Lead Capturing <b class="caret" style="color: #000000;"></b> <span class="pro">PRO</span></li>
-      <ul class="sub-section">
-        <li>Create new Ad</span>
-        <li>My Ads</span>
-        <li>My Leads</span>
-      </ul>
-    </ul>
   </div>
 
   <div ng-hide="showSidebarDefault($state)">
@@ -38,7 +30,7 @@
     </div>
     <div class="text-center">
       <hr class="crossover-strip">
-      <form name="insightForm" ng-submit="update(insightForm.$valid)" novalidate>
+      <form name="insightForm" ng-submit="update(insightForm.$valid)" novalidate ng-controller="InsightsController">
         <fieldset>
           <div class="form-group edit-buttons text-center">
             <button type="button" class="btn btn-default no-border-radius" ui-sref="insights.preview({insightId: insight._id})">Preview</button>
@@ -73,9 +65,5 @@
         </fieldset>
       </form>
     </div>
-    <section class="related-insights-section text-center">
-      <span>RELATED INSIGHTS</span>
-      <img />
-    </section>
   </div>
 </div>
