@@ -1,8 +1,8 @@
 'use strict';
 
 // Insights controller
-angular.module('insights').controller('InsightsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Insights', '$modal', '$log', 
-  function ($scope, $stateParams, $location, Authentication, Insights, $modal, $log) {
+angular.module('insights').controller('InsightsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Insights', '$modal', '$log', '$rootScope', 
+  function ($scope, $stateParams, $location, Authentication, Insights, $modal, $log, $rootScope) {
     $scope.authentication = Authentication;
 
     // Create new Insight
@@ -76,7 +76,7 @@ angular.module('insights').controller('InsightsController', ['$scope', '$statePa
 
     // Find existing Insight
     $scope.findOne = function () {
-      $scope.insight = Insights.get({
+      $rootScope.insight = Insights.get({
         insightId: $stateParams.insightId
       });
     };
