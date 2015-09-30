@@ -24,46 +24,9 @@
   </div>
 
   <div ng-hide="showSidebarDefault($state)">
-    <div class="edit-title text-center">
-      <span>Create new Insight</span>
-      <button type="button" class="close" aria-label="Close" ui-sref="home()"><span aria-hidden="true">&times;</span></button>
-    </div>
-    <div class="text-center">
-      <hr class="crossover-strip">
-      <form name="insightForm" ng-submit="update(insightForm.$valid)" novalidate ng-controller="InsightsController">
-        <fieldset>
-          <div class="form-group edit-buttons text-center">
-            <button type="button" class="btn btn-default no-border-radius" ui-sref="insights.preview({insightId: insight._id})">Preview</button>
-            <button type="button" class="btn btn-primary no-border-radius" ng-click="publish_popup('lg', insight)">Publish</button>
-          </div>
 
-          <div class="form-group">
-            <img class="edit-img" ng-src="{{authentication.user.profileImageURL}}" alt="{{authentication.user.displayName}}"/><br />
-            <span class="edit-profile-name" ng-bind="authentication.user.displayName"></span>
-          </div>
+    <section ng-show="$state.current.name == 'insights.edit'" ng-include="'/modules/insights/client/views/sidebar-edit-insight.client.view.html'"></section>
+    <section ng-show="$state.current.name == 'insights.preview'" ng-include="'/modules/insights/client/views/sidebar-preview-insight.client.view.html'"></section>
 
-          <div class="form-group" show-errors style="padding: 0 15px;">
-            <input name="title" type="text" ng-model="insight.title" id="title" class="form-control" placeholder="Title" required>
-            <div ng-messages="insightForm.title.$error" role="alert">
-              <p class="help-block error-text" ng-message="required">Insight title is required.</p>
-            </div>
-          </div>
-          <div class="form-group" style="padding: 0 15px;">
-            <textarea name="content" ng-model="insight.content" id="content" class="form-control" cols="30" rows="8" placeholder="Share an update" ng-keyup="autoSave()"></textarea>
-          </div>
-
-          <div class="content-type">
-            <span class="glyphicon glyphicon-pencil"><br />Text</span>
-            <span class="glyphicon glyphicon-camera"><br />Photo</span>
-            <span class="glyphicon glyphicon-link"><br />Link</span>
-            <span class="glyphicon glyphicon-facetime-video"><br />Video</span>
-          </div>
-
-          <div ng-show="error" class="text-danger">
-            <strong ng-bind="error"></strong>
-          </div>
-        </fieldset>
-      </form>
-    </div>
   </div>
 </div>

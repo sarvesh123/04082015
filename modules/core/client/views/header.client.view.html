@@ -8,6 +8,11 @@
       </form>
     </div>
 
+    <div class="col-xs-10 header-form text-center" ng-show="$state.current.name == 'insights.preview'" ng-controller="InsightsController">
+      <button type="button" class="btn btn-default no-border-radius site-button-width" ui-sref="insights.edit({insightId: insight._id})">Edit</button>
+      <button type="button" class="btn btn-primary no-border-radius site-button-width" ng-click="publish_popup('lg', insight)">Publish</button>
+    </div>
+
     <div class="col-xs-2 pull-right">
       <ul class="nav navbar-nav navbar-right" ng-hide="authentication.user">
         <li ui-sref-active="active">

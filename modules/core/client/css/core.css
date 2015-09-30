@@ -93,7 +93,6 @@ a:hover .header-profile-image {
 }
 .side-menu-bottom {
   float: left;
-  padding: 20px 0;
   height: 90%;
   width: 100%;
 }
@@ -129,7 +128,7 @@ a:hover .header-profile-image {
   padding-right: 50px;
   float: left;
   width: 100%;
-  height: 17%;
+  height: 9%;
 }
 .create-insight-form {
   max-width: 700px;
@@ -185,6 +184,8 @@ a:hover .header-profile-image {
 .edit-profile-name {
   text-transform: uppercase;
   font-weight: bold;
+  color: #565656;
+  font-size: 20px;
 }
 .related-insights-section {
   padding: 20px 0;
@@ -214,4 +215,7 @@ a:hover .header-profile-image {
 }
 .site-button-width {
   width: 75px;
+}
+.preview-insight {
+  padding: 10px 20px;
 }

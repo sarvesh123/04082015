@@ -34,7 +34,7 @@ angular.module('core').controller('HeaderController', ['$scope', '$state', 'Auth
     };
 
     $scope.showSidebarDefault = function ($state) {
-      var showArr = ['insights.edit'];
+      var showArr = ['insights.edit', 'insights.preview'];
       var currentName = $state.current.name;
 
       if ( showArr.indexOf(currentName) < 0 ) {
