@@ -219,3 +219,8 @@ a:hover .header-profile-image {
 .preview-insight {
   padding: 10px 20px;
 }
+.preview-insight-box {
+  border: none;
+  overflow: hidden;
+  height: 75px;
+}

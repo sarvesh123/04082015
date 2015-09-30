@@ -1,8 +1,8 @@
 'use strict';
 
 // Insights controller
-angular.module('insights').controller('InsightsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Insights', '$modal', '$log', '$rootScope', 
-  function ($scope, $stateParams, $location, Authentication, Insights, $modal, $log, $rootScope) {
+angular.module('insights').controller('InsightsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Insights', '$modal', '$log', '$rootScope', '$http',
+  function ($scope, $stateParams, $location, Authentication, Insights, $modal, $log, $rootScope, $http) {
     $scope.authentication = Authentication;
 
     // Create new Insight
@@ -91,10 +91,7 @@ angular.module('insights').controller('InsightsController', ['$scope', '$statePa
     };
 
     $scope.publish_popup = function (size, insight) {
-
-      insight.url_view = $location.$$protocol + '://' + $location.$$host + ':' + $location.$$port + 
-        '/insights/' + insight._id;
-
+      
         var modalInstance = $modal.open({
           animation: $scope.animationsEnabled,
           templateUrl: 'modules/insights/client/views/publish-lightbox-insight.client.view.html',
@@ -112,6 +109,24 @@ angular.module('insights').controller('InsightsController', ['$scope', '$statePa
         }, function () {
           $log.info('Modal dismissed at: ' + new Date());
         });
+    };
+
+    $scope.getUrlData = function () {
+
+      var embedly_url = 'http://api.embed.ly/1/extract?key=38b6d4e2bb8b4c589a15b0e9e79a8a39&url=';
+      var req = {
+        method: 'GET',
+        url: embedly_url + $scope.insight.orig_url,
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }
+      $http(req).then(function successCallback(response) {
+        $scope.insightEmbedlyDescription = response.data.description;
+        $scope.insightEmbedlyThumbnail = response.data.description;
+      }, function errorCallback(response) {
+      });
+
     };
 
   }
