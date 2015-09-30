@@ -129,7 +129,7 @@ a:hover .header-profile-image {
   padding-right: 50px;
   float: left;
   width: 100%;
-  height: 8%;
+  height: 17%;
 }
 .create-insight-form {
   max-width: 700px;
@@ -156,7 +156,6 @@ a:hover .header-profile-image {
 }
 .header-form {
   padding-top: 15px;
-  width: auto;
 }
 .header-form input.form-control {
   width: 300px;
@@ -164,7 +163,7 @@ a:hover .header-profile-image {
   border: 1px solid #359ECF;
   border-right: none;
 }
-.header-form button {
+.header-form-button {
   border: 1px solid #359ECF;
 }
 .edit-title {
@@ -212,4 +211,7 @@ a:hover .header-profile-image {
 }
 .full-width {
   width: 100%;
+}
+.site-button-width {
+  width: 75px;
 }
