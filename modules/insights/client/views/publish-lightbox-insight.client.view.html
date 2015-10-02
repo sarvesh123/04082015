@@ -1,4 +1,4 @@
-<button ng-click="cancel()" type="button" class="close" aria-label="Close" style="padding: 15px;"><span aria-hidden="true">&times;</span></button>
+<button ng-click="close()" type="button" class="close" aria-label="Close" style="padding: 15px;"><span aria-hidden="true">&times;</span></button>
 <div style="padding:50px;">
     <div class="center-block">
         <div class="form-group form-inline">
@@ -20,7 +20,7 @@
     <form>
 
         <div class="form-group">
-            <label for="content">Share insighter via:</label>
+            <label for="content">Share Insighter via:</label>
             <p ng-hide="showEditor">{{insight.content | limitTo:100}}<span ng-if="insight.content.length > 100">... more</span></p>
             <input type="text" ng-show="showEditor" class="form-control preview-insight-box" id="content" ng-bind="insight.content" value="{{insight.content | limitTo:100}}">
             <a href="" ng-click="$root.showEditor = true">edit</a>
@@ -28,8 +28,11 @@
 
         <!--the original view-->
         <section ng-controller="InsightsController" ng-init="getUrlData()" class="embed">
-          <div class="col-xs-4 full-height"><img src="{{insightEmbedlyThumbnail}}" class="embed-thumb"></div>
-          <div class="col-xs-8">{{insightEmbedlyDescription}}</div>
+            <section class="col-xs-4 full-height"><img src="{{response.data.images[0].url}}" class="embed-thumb"></section>
+            <section class="col-xs-8 embed-text">
+                <header class="embed-title">{{response.data.title}}</header>
+                <p class="embed-desc">{{response.data.description}}</p>
+            </section>
         </section>
 
         <div>
@@ -40,7 +43,7 @@
         </div>
         <br /><br />
         <div class="form-group text-right">
-          <button type="button" class="btn btn-default no-border-radius site-button-width" ui-sref="insights.edit({insightId: insight._id})">Cancel</button>
+          <button type="button" class="btn btn-default no-border-radius site-button-width" ng-click="close()">Cancel</button>
           <button type="button" class="btn btn-primary no-border-radius site-button-width" ng-click="update()">Publish</button>
         </div>
 

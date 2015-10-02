@@ -116,8 +116,6 @@ angular.module('insights').controller('InsightsController', ['$scope', '$statePa
 
         modalInstance.result.then(function (selectedItem) {
           $scope.selected = selectedItem;
-        }, function () {
-          $log.info('Modal dismissed at: ' + new Date());
         });
     };
 
@@ -132,8 +130,7 @@ angular.module('insights').controller('InsightsController', ['$scope', '$statePa
         }
       };
       $http(req).then(function successCallback(response) {
-        $scope.insightEmbedlyDescription = response.data.description;
-        $scope.insightEmbedlyThumbnail = response.data.images[0].url;
+        $scope.response = response;
       }, function errorCallback(response) {
       });
 
