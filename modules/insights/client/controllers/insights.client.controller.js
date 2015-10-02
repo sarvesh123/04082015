@@ -120,7 +120,7 @@ angular.module('insights').controller('InsightsController', ['$scope', '$statePa
         headers: {
           'Content-Type': 'application/json'
         }
-      }
+      };
       $http(req).then(function successCallback(response) {
         $scope.insightEmbedlyDescription = response.data.description;
         $scope.insightEmbedlyThumbnail = response.data.description;
