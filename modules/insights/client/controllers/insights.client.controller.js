@@ -15,21 +15,31 @@ angular.module('insights').controller('InsightsController', ['$scope', '$statePa
         return false;
       }
 
-      // Create new Insight object
-      var insight = new Insights({
-        content: this.content,
-        title: this.title,
-        orig_url: this.orig_url,
-      });
+      var orig_url = this.orig_url;
+      var embedly_url = 'http://api.embed.ly/1/extract?key=38b6d4e2bb8b4c589a15b0e9e79a8a39&url=';
+      var req = {
+        method: 'GET',
+        url: embedly_url + orig_url,
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      };
+      $http(req).then(function successCallback(response) {
+            // Create new Insight object
+            var insight = new Insights({
+              title: response.data.title,
+              orig_url: orig_url,
+            });
 
-      // Redirect after save
-      insight.$save(function (response) {
-        $location.path('insights/' + response._id + '/edit');
-
-        // Clear form fields
-        $scope.insight = '';
-      }, function (errorResponse) {
-        $scope.error = errorResponse.data.message;
+            // Redirect after save
+            insight.$save(function (response) {
+              $location.path('insights/' + response._id + '/edit');
+              // Clear form fields
+              $scope.insight = '';
+            }, function (errorResponse) {
+              $scope.error = errorResponse.data.message;
+            });
+      }, function errorCallback(response) {
       });
     };
 

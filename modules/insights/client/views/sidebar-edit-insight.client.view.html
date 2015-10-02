@@ -16,12 +16,6 @@
             <span class="edit-profile-name" ng-bind="authentication.user.displayName"></span>
           </div>
 
-          <div class="form-group" show-errors style="padding: 0 15px;">
-            <input name="title" type="text" ng-model="insight.title" id="title" class="form-control" placeholder="Title" required>
-            <div ng-messages="insightForm.title.$error" role="alert">
-              <p class="help-block error-text" ng-message="required">Insight title is required.</p>
-            </div>
-          </div>
           <div class="form-group" style="padding: 0 15px;">
             <textarea name="content" ng-model="insight.content" id="content" class="form-control" cols="30" rows="8" placeholder="Share an update" ng-keyup="autoSave()"></textarea>
           </div>
