@@ -133,7 +133,7 @@ angular.module('insights').controller('InsightsController', ['$scope', '$statePa
       };
       $http(req).then(function successCallback(response) {
         $scope.insightEmbedlyDescription = response.data.description;
-        $scope.insightEmbedlyThumbnail = response.data.description;
+        $scope.insightEmbedlyThumbnail = response.data.images[0].url;
       }, function errorCallback(response) {
       });
 

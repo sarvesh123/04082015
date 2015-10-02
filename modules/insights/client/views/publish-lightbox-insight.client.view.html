@@ -21,14 +21,14 @@
 
         <div class="form-group">
             <label for="content">Share insighter via:</label>
-            <p ng-hide="showEditor">{{insight.content | limitTo:100}}... more</p>
+            <p ng-hide="showEditor">{{insight.content | limitTo:100}}<span ng-if="insight.content.length > 100">... more</span></p>
             <input type="text" ng-show="showEditor" class="form-control preview-insight-box" id="content" ng-bind="insight.content" value="{{insight.content | limitTo:100}}">
             <a href="" ng-click="$root.showEditor = true">edit</a>
         </div>
 
         <!--the original view-->
         <section ng-controller="InsightsController" ng-init="getUrlData()" class="embed">
-          <div class="col-xs-4"><img src="{{insightEmbedlyThumbnail}}"></div>
+          <div class="col-xs-4 full-height"><img src="{{insightEmbedlyThumbnail}}" class="embed-thumb"></div>
           <div class="col-xs-8">{{insightEmbedlyDescription}}</div>
         </section>
 
