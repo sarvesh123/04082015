@@ -25,3 +25,11 @@
 .embed-text {
 	padding: 20px;
 }
+.my-insights {
+	font-size: 20px;
+	font-weight: bold;
+	padding-left: 30px;
+}
+.insights-list {
+	font-size: smaller;
+}

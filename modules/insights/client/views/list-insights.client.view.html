@@ -1,14 +1,13 @@
 <section ng-controller="InsightsController" ng-init="find()">
-  <div class="page-header">
-    <h1>My Insights</h1>
-  </div>
+  <h1 class="my-insights">My Insights</h1>
 
-  <table class="table" ng-if="insights.length" class="ng-hide">
+  <table class="table insights-list" ng-if="insights.length">
 
     <tr>
       <td><input type="checkbox" ></td>
-      <td><button ng-click="multi_edit()">Edit</button></td>
-      <td><button ng-click="multi_delete()">Delete</button></td>
+      <td colspan="7">
+        <button class="btn btn-primary no-border-radius site-button-width" ng-click="multi_edit()">Edit</button>
+        <button class="btn btn-danger no-border-radius site-button-width" ng-click="multi_delete()">Delete</button></td>
     </tr>
 
     <tr ng-if="insights.length">
@@ -25,12 +24,12 @@
     <tr ng-repeat="insight in insights">
       <td> <input type="checkbox" ng-model="slt[insight._id]"> </td>
       <td ng-bind="insight.created | date:'mediumDate'"></td>
-      <td ng-bind="insight.content | limitTo:200" ng-maxlength="50" ui-sref="insights.view({insightId: insight._id})" class="hover"></td>
+      <td ng-bind="insight.content | limitTo:100" ui-sref="insights.view({insightId: insight._id})" class="hover" style="width:200px;"></td>
       <td ng-bind="insight.title"></td>
-      <td >Bit.ly/weihzxx</td>
-      <td ng-bind="insight.orig_url"></td>
-      <td ng-bind="insight.views"></td>
-      <td>4</td>
+      <td><a href="Bit.ly/weihzxx">Bit.ly/weihzxx</a></td>
+      <td style="width:100px;"><a href="{{insight.orig_url}}">{{insight.orig_url}}</a></td>
+      <td ng-bind="insight.views" class="text-center"></td>
+      <td class="text-center">4</td>
     </tr>
 
   </table>
