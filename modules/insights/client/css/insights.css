@@ -33,3 +33,10 @@
 .insights-list {
 	font-size: smaller;
 }
+.content-type {
+	font-size: medium;
+}
+.my-insights-actions button {
+	font-size: smaller;
+	font-weight: bold;
+}

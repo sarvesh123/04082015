@@ -3,10 +3,11 @@
 
   <table class="table insights-list" ng-if="insights.length">
 
-    <tr>
+    <tr style="background-color: #F9F9F9;">
       <td><input type="checkbox" ></td>
       <td colspan="7">
-        <button class="btn btn-primary no-border-radius site-button-width" ng-click="multi_edit()">Edit</button>
+        <button class="btn btn-primary no-border-radius site-button-width" ng-click="editInsight = !editInsight">Edit</button>
+        &nbsp;&nbsp;
         <button class="btn btn-danger no-border-radius site-button-width" ng-click="multi_delete()">Delete</button></td>
     </tr>
 
@@ -24,7 +25,28 @@
     <tr ng-repeat="insight in insights">
       <td> <input type="checkbox" ng-model="slt[insight._id]"> </td>
       <td ng-bind="insight.created | date:'mediumDate'"></td>
-      <td ng-bind="insight.content | limitTo:100" ui-sref="insights.view({insightId: insight._id})" class="hover" style="width:200px;"></td>
+
+      <td class="hover" style="width:250px;">
+        <span ng-bind="insight.content | limitTo:100" ui-sref="insights.view({insightId: insight._id})" ng-hide="editInsight"></span>
+        <form name="insightForm" ng-submit="update(insightForm.$valid)" novalidate ng-controller="InsightsController" ng-show="editInsight">
+          <div class="form-group" style="padding: 0 15px;">
+            <textarea name="content" ng-model="insight.content" id="content" class="form-control" cols="30" rows="8" placeholder="Share an update"></textarea>
+          </div>
+
+          <div class="content-type text-center">
+            <span class="glyphicon glyphicon-pencil"><br />Text</span>
+            <span class="glyphicon glyphicon-camera"><br />Photo</span>
+            <span class="glyphicon glyphicon-link"><br />Link</span>
+            <span class="glyphicon glyphicon-facetime-video"><br />Video</span>
+          </div>
+          <br /><br />
+          <div class="form-group text-center my-insights-actions">
+            <button class="btn btn-default no-border-radius" ng-click="multi_edit()">Done</button>&nbsp;&nbsp;
+            <button class="btn btn-primary no-border-radius" ng-click="multi_delete()">Re-Publish</button>
+          </div>
+        </form>
+      </td>
+
       <td ng-bind="insight.title"></td>
       <td><a href="Bit.ly/weihzxx">Bit.ly/weihzxx</a></td>
       <td style="width:100px;"><a href="{{insight.orig_url}}">{{insight.orig_url}}</a></td>
