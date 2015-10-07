@@ -45,7 +45,7 @@ a:hover .header-profile-image {
   height: 92%;
   width: 100%;
   float: left;
-  padding: 50px;
+  padding: 13px 50px 50px 50px;
 }
 .custom-help-block {
   font-style: italic;
@@ -197,6 +197,7 @@ a:hover .header-profile-image {
 }
 .default-sidebar {
   padding: 0 20px;
+  margin-top: 20px;
 }
 .span-menu {
   font-weight: bold;

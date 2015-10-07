@@ -5,6 +5,8 @@ angular.module('insights').controller('InsightsController', ['$scope', '$statePa
   function ($scope, $stateParams, $location, Authentication, Insights, $modal, $log, $rootScope, $http) {
     $scope.authentication = Authentication;
 
+    $scope.selectedCheckbox = [];
+
     // Create new Insight
     $scope.create = function (isValid) {
       $scope.error = null;
@@ -136,6 +138,30 @@ angular.module('insights').controller('InsightsController', ['$scope', '$statePa
 
     };
 
+    $scope.editInsight = function (checkboxes) {
+      if ($scope.selectedCheckbox.length == 1) {
+        $scope.openEditBox = $scope.selectedCheckbox[0];
+      }
+      else if ($scope.selectedCheckbox.length == 0) {
+        $scope.checkbox_warning = 'You need to select atleast one insight';
+        $scope.openEditBox = false;
+      }
+      else {
+        $scope.checkbox_warning = 'You can edit only one insight at one time';
+        $scope.openEditBox = false;
+      }
+    };
+
+    $scope.saveClickedCheckbox = function (insightId) {
+      var checkboxState = $scope.selectedCheckbox.indexOf(insightId);
+
+      if (checkboxState > -1) {
+        $scope.selectedCheckbox.splice(checkboxState, 1);
+      }
+      else {
+        $scope.selectedCheckbox.push(insightId);
+      }
+    };
   }
 ])
 .filter('trusted', ['$sce', function ($sce) {
