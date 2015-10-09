@@ -30,7 +30,7 @@
 
       <td class="hover" style="width:250px;">
         <span ng-bind="insight.content | limitTo:100" ui-sref="insights.view({insightId: insight._id})" ng-hide="openEditBox == insight._id"></span>
-        <form name="insightForm" ng-submit="update(insightForm.$valid)" novalidate ng-controller="InsightsController" ng-show="openEditBox == insight._id">
+        <section ng-controller="InsightsController" ng-show="openEditBox == insight._id">
           <div class="form-group" style="padding: 0 15px;">
             <textarea name="content" ng-model="insight.content" id="content" class="form-control" cols="30" rows="8" placeholder="Share an update"></textarea>
           </div>
@@ -46,7 +46,7 @@
             <button class="btn btn-default no-border-radius" ng-click="multi_edit()">Done</button>&nbsp;&nbsp;
             <button class="btn btn-primary no-border-radius" ng-click="multi_delete()">Re-Publish</button>
           </div>
-        </form>
+        </section>
       </td>
 
       <td ng-bind="insight.title"></td>
