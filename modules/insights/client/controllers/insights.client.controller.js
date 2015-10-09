@@ -139,10 +139,10 @@ angular.module('insights').controller('InsightsController', ['$scope', '$statePa
     };
 
     $scope.editInsight = function (checkboxes) {
-      if ($scope.selectedCheckbox.length == 1) {
+      if ($scope.selectedCheckbox.length === 1) {
         $scope.openEditBox = $scope.selectedCheckbox[0];
       }
-      else if ($scope.selectedCheckbox.length == 0) {
+      else if ($scope.selectedCheckbox.length === 0) {
         $scope.checkbox_warning = 'You need to select atleast one insight';
         $scope.openEditBox = false;
       }
