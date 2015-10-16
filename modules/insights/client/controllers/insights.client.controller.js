@@ -162,6 +162,13 @@ angular.module('insights').controller('InsightsController', ['$scope', '$statePa
         $scope.selectedCheckbox.push(insightId);
       }
     };
+
+    $scope.updateContent = function (insight) {
+      var selected_insight = insight;
+
+      selected_insight.$update();
+
+    };
   }
 ])
 .filter('trusted', ['$sce', function ($sce) {
