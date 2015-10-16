@@ -138,7 +138,7 @@ angular.module('insights').controller('InsightsController', ['$scope', '$statePa
 
     };
 
-    $scope.editInsight = function (checkboxes) {
+    $scope.openContentBox = function (checkboxes) {
       if ($scope.selectedCheckbox.length === 1) {
         $scope.openEditBox = $scope.selectedCheckbox[0];
       }
@@ -169,6 +169,21 @@ angular.module('insights').controller('InsightsController', ['$scope', '$statePa
       selected_insight.$update();
 
     };
+
+    $scope.deleteInsights = function (checkboxes) {
+      if ($scope.selectedCheckbox.length === 0) {
+        $scope.checkbox_warning = 'You need to select atleast one insight';
+      }
+      else {
+        for (var index = 0; index < $scope.insights.length; index++) {
+          if ($scope.selectedCheckbox == $scope.insights[index]._id) {
+            $http.delete('/api/insights/' + $scope.insights[index]._id);
+            $scope.insights.splice(index, 1);
+          }
+        }
+      }
+    };
+
   }
 ])
 .filter('trusted', ['$sce', function ($sce) {
