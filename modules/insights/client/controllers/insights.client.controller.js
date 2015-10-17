@@ -175,10 +175,13 @@ angular.module('insights').controller('InsightsController', ['$scope', '$statePa
         $scope.checkbox_warning = 'You need to select atleast one insight';
       }
       else {
-        for (var index = 0; index < $scope.insights.length; index++) {
-          if ($scope.selectedCheckbox == $scope.insights[index]._id) {
+        for (var index = 0; index < $scope.insights.length;) {
+          if ($scope.selectedCheckbox.indexOf($scope.insights[index]._id) > -1) {
             $http.delete('/api/insights/' + $scope.insights[index]._id);
             $scope.insights.splice(index, 1);
+          }
+          else {
+            index++;
           }
         }
       }
