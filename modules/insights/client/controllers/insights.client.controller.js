@@ -7,6 +7,8 @@ angular.module('insights').controller('InsightsController', ['$scope', '$statePa
 
     $scope.selectedCheckbox = [];
 
+    $scope.url = null;
+
     // Create new Insight
     $scope.create = function (isValid) {
       $scope.error = null;
@@ -17,7 +19,8 @@ angular.module('insights').controller('InsightsController', ['$scope', '$statePa
         return false;
       }
 
-      var orig_url = this.orig_url;
+      var orig_url = this.url;
+      $scope.url = null;
       var embedly_url = 'http://api.embed.ly/1/extract?key=38b6d4e2bb8b4c589a15b0e9e79a8a39&url=';
       var req = {
         method: 'GET',

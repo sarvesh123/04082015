@@ -3,7 +3,7 @@
 
     <div class="col-xs-10 header-form" ng-show="showHeaderForm($state)">
       <form name="insightForm" ng-submit="create(insightForm.$valid)" novalidate ng-controller="InsightsController">
-        <input type="text" id="orig_url" ng-model="orig_url" placeholder="Enter a URL (e.g. www.techcrunch.com)" class="form-control no-border-radius">
+        <input type="text" id="url" ng-model="url" placeholder="Enter a URL (e.g. www.techcrunch.com)" class="form-control no-border-radius">
         <button type="submit" class="btn btn-default no-border-radius header-form-button">Create Insight</button>
       </form>
     </div>
