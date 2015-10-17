@@ -4,7 +4,7 @@
   <table class="table insights-list" ng-if="insights.length">
 
     <tr style="background-color: #F9F9F9;">
-      <td><input type="checkbox" ></td>
+      <td><input type="checkbox" ng-click="saveAllCheckboxes()" ng-checked="allCheckboxes" ></td>
       <td colspan="7">
         <button class="btn btn-primary no-border-radius site-button-width" ng-click="openContentBox(checkboxes)">Edit</button>
         &nbsp;&nbsp;
@@ -25,12 +25,12 @@
     </tr>
 
     <tr ng-repeat="insight in insights">
-      <td> <input type="checkbox" ng-click="saveClickedCheckbox(insight._id)"> </td>
+      <td> <input type="checkbox" ng-click="saveClickedCheckbox(insight._id)" ng-checked="allCheckboxes"> </td>
       <td ng-bind="insight.created | date:'mediumDate'"></td>
 
       <td class="hover" style="width:250px;">
         <span ng-bind="insight.content | limitTo:100" ui-sref="insights.view({insightId: insight._id})" ng-hide="openEditBox == insight._id"></span>
-        <section ng-controller="InsightsController" ng-show="openEditBox == insight._id">
+        <section ng-show="openEditBox == insight._id">
           <div class="form-group" style="padding: 0 15px;">
             <textarea name="content" ng-model="insight.content" id="content" class="form-control" cols="30" rows="8" placeholder="Share an update"></textarea>
           </div>

@@ -9,6 +9,8 @@ angular.module('insights').controller('InsightsController', ['$scope', '$statePa
 
     $scope.url = null;
 
+    $scope.allCheckboxes = false;
+
     // Create new Insight
     $scope.create = function (isValid) {
       $scope.error = null;
@@ -141,7 +143,7 @@ angular.module('insights').controller('InsightsController', ['$scope', '$statePa
 
     };
 
-    $scope.openContentBox = function (checkboxes) {
+    $scope.openContentBox = function () {
       if ($scope.selectedCheckbox.length === 1) {
         $scope.openEditBox = $scope.selectedCheckbox[0];
       }
@@ -157,7 +159,6 @@ angular.module('insights').controller('InsightsController', ['$scope', '$statePa
 
     $scope.saveClickedCheckbox = function (insightId) {
       var checkboxState = $scope.selectedCheckbox.indexOf(insightId);
-
       if (checkboxState > -1) {
         $scope.selectedCheckbox.splice(checkboxState, 1);
       }
@@ -173,7 +174,7 @@ angular.module('insights').controller('InsightsController', ['$scope', '$statePa
 
     };
 
-    $scope.deleteInsights = function (checkboxes) {
+    $scope.deleteInsights = function () {
       if ($scope.selectedCheckbox.length === 0) {
         $scope.checkbox_warning = 'You need to select atleast one insight';
       }
@@ -187,6 +188,14 @@ angular.module('insights').controller('InsightsController', ['$scope', '$statePa
             index++;
           }
         }
+      }
+    };
+
+    $scope.saveAllCheckboxes = function () {
+      $scope.allCheckboxes = ! $scope.allCheckboxes;
+      var insights = $scope.insights;
+      for (var index = 0; index < insights.length; index++) {
+        $scope.selectedCheckbox.push( insights[index]._id );
       }
     };
 
