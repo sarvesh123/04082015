@@ -7,7 +7,10 @@ angular.module('users').config(['$stateProvider',
     $stateProvider
       .state('myprofile', {
         url: '/myprofile',
-        templateUrl: 'modules/users/client/views/myprofile/myprofile.client.view.html'
+        templateUrl: 'modules/users/client/views/myprofile/myprofile.client.view.html',
+        data: {
+          roles: ['user']
+        }
       })
       .state('settings', {
         abstract: true,

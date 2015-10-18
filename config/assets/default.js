@@ -4,7 +4,8 @@ module.exports = {
   client: {
     lib: {
       css: [
-        'public/lib/bootstrap/dist/css/bootstrap.css'
+        'public/lib/bootstrap/dist/css/bootstrap.css',
+        'public/lib/font-awesome-4.4.0/css/font-awesome.min.css'
       ],
       js: [
         'public/lib/angular/angular.js',

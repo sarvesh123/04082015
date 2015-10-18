@@ -2,22 +2,36 @@
 	<h2>Primary Profile</h1>
 
 	<section class="profile">
-		<section class="profile-box bg-gray">
-			<section class="profile-box-header">
-				<span class="small-site-logo">Insighter</span>
-				<span class="hamburger-icon"></span>
-			</section>
+		<div class="profile-box bg-gray">
+			<div class="profile-box-header">
+				<span class="small-site-logo pull-left">Insighter</span>
+				<span class="glyphicon glyphicon-menu-hamburger pull-right" style="margin: 10px 20px 10px"></span>
+			</div>
 
-			<section class="profile-image-box text-center">
+			<div class="profile-image-box text-center">
 				<img src="{{user.profileImageURL}}" alt="profile photo" class="profile-image">
-			</section>
+			</div>
 
-			<section class="profile-data">
-				<h4 class="profile-name">{{user.firstName}} {{user.lastName}}</h4>
-				<span class="profile-title">VP Marketing at VoiceTec</span>
-				<span class="profile-social-links"></span>
-			</section>
-		</section>
+			<div class="profile-data">
+				<div class="profile-name-box pull-left">
+					<div class="profile-name-cover pull-left">
+						<h3 class="profile-name">{{user.firstName}} {{user.lastName}}</h3>
+					</div>
+					<span class="glyphicon glyphicon-pencil profile-edit-icon pull-left edit-profile-data-icon"></span>
+				</div>
+
+				<span class="profile-title pull-left">VP Marketing at VoiceTec</span>
+				<span class="glyphicon glyphicon-pencil pull-left edit-profile-data-icon"></span>
+
+				<div class="profile-social-links text-center pull-left">
+					<i class="fa fa-twitter social-link"></i>
+					<i class="fa fa-linkedin-square social-link"></i>
+					<i class="fa fa-google-plus social-link"></i>
+					<i class="fa fa-facebook-official social-link"></i>
+					&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-pencil edit-profile-data-icon"></span>
+				</div>
+			</div>
+		</div>
 		<br />
 		<section class="text-center">
 			<button class="btn btn-default">Edit Profile</button>
