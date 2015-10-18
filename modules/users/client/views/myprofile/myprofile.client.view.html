@@ -17,24 +17,24 @@
 					<div class="profile-name-cover pull-left">
 						<h3 class="profile-name">{{user.firstName}} {{user.lastName}}</h3>
 					</div>
-					<span class="glyphicon glyphicon-pencil profile-edit-icon pull-left edit-profile-data-icon"></span>
+					<span class="glyphicon glyphicon-pencil profile-edit-icon pull-left edit-profile-data-icon" ng-show="showEditButton"></span>
 				</div>
 
 				<span class="profile-title pull-left">VP Marketing at VoiceTec</span>
-				<span class="glyphicon glyphicon-pencil pull-left edit-profile-data-icon"></span>
+				<span class="glyphicon glyphicon-pencil pull-left edit-profile-data-icon" ng-show="showEditButton"></span>
 
 				<div class="profile-social-links text-center pull-left">
 					<i class="fa fa-twitter social-link"></i>
 					<i class="fa fa-linkedin-square social-link"></i>
 					<i class="fa fa-google-plus social-link"></i>
 					<i class="fa fa-facebook-official social-link"></i>
-					&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-pencil edit-profile-data-icon"></span>
+					&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-pencil edit-profile-data-icon" ng-show="showEditButton"></span>
 				</div>
 			</div>
 		</div>
 		<br />
 		<section class="text-center">
-			<button class="btn btn-default">Edit Profile</button>
+			<button class="btn btn-default" ng-click="showEditButton = ! showEditButton">Edit Profile</button>
 		</section>
 	</section>
 </section>
