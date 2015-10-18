@@ -1,0 +1,26 @@
+<section ng-controller="EditProfileController" ng-init="" style="padding-top: 20px;">
+	<h2>Primary Profile</h1>
+
+	<section class="profile">
+		<section class="profile-box bg-gray">
+			<section class="profile-box-header">
+				<span class="small-site-logo">Insighter</span>
+				<span class="hamburger-icon"></span>
+			</section>
+
+			<section class="profile-image-box text-center">
+				<img src="{{user.profileImageURL}}" alt="profile photo" class="profile-image">
+			</section>
+
+			<section class="profile-data">
+				<h4 class="profile-name">{{user.firstName}} {{user.lastName}}</h4>
+				<span class="profile-title">VP Marketing at VoiceTec</span>
+				<span class="profile-social-links"></span>
+			</section>
+		</section>
+		<br />
+		<section class="text-center">
+			<button class="btn btn-default">Edit Profile</button>
+		</section>
+	</section>
+</section>

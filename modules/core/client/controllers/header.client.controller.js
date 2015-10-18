@@ -22,7 +22,7 @@ angular.module('core').controller('HeaderController', ['$scope', '$state', 'Auth
     });
 
     $scope.showHeaderForm = function ($state) {
-      var showArr = ['insights.edit', 'insights.list'];
+      var showArr = ['insights.edit', 'insights.list', 'myprofile'];
       var currentName = $state.current.name;
 
       if ( showArr.indexOf(currentName) > -1 ) {

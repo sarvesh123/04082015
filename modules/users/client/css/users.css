@@ -1,3 +1,44 @@
+.profile {
+  width: 300px;
+  height: 300px;
+}
+.profile-box {
+  height: 270px;
+}
+.small-site-logo {
+    font-weight: bold;
+    color: #359ECF;
+    font-size: 10px;
+    padding: 2px;
+    float: left;
+    text-decoration: none;
+    border: 1px solid #359ECF;
+    margin: 10px;
+}
+.profile-box-header {
+  height: 40px;
+}
+.profile-image-box {
+  margin: 5px 0 20px 0;
+}
+h4.profile-name {
+  width: 100%;
+  text-align: center;
+  float: left;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin: 0;
+}
+.profile-title {
+  width: 100%;
+  text-align: center;
+  float: left;
+  font-style: italic;
+}
+.profile-image {
+  border-radius: 50%;
+  width: 100px;
+}
 @media (min-width: 992px) {
   .nav-users {
     position: fixed;
