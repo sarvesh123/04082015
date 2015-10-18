@@ -62,7 +62,11 @@
   font-weight: bold;
   margin: 0 0 10px 0;
 }
-
+.edit-profile-title {
+  width: 220px;
+  margin: 0 5px 0 37px;
+  float: left;
+}
 
 
 

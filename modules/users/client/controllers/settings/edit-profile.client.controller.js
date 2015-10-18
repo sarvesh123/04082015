@@ -4,7 +4,7 @@ angular.module('users').controller('EditProfileController', ['$scope', '$http', 
   function ($scope, $http, $location, Users, Authentication) {
     $scope.user = Authentication.user;
 
-    $scope.showEditButton = false;
+    $scope.showEditButton = $scope.allowEditName = false;
 
     // Update a user profile
     $scope.updateUserProfile = function (isValid) {
@@ -27,5 +27,14 @@ angular.module('users').controller('EditProfileController', ['$scope', '$http', 
         $scope.error = response.data.message;
       });
     };
+
+    $scope.returnViewMode = function () {
+      $scope.showEditButton = $scope.allowEditName = false;
+    }
+
+    $scope.saveProfile = function () {
+      $scope.returnViewMode();
+    }
+
   }
 ]);

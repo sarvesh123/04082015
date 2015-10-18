@@ -15,13 +15,20 @@
 			<div class="profile-data">
 				<div class="profile-name-box pull-left">
 					<div class="profile-name-cover pull-left">
-						<h3 class="profile-name">{{user.firstName}} {{user.lastName}}</h3>
+						<h3 class="profile-name" ng-hide="allowEditName">{{user.firstName}} {{user.lastName}}</h3>
+						<div ng-show="allowEditName">
+							<input ng-model="user.firstName" type="text" class="form-control">
+							<input ng-model="user.lastName" type="text" class="form-control">
+						</div>
 					</div>
-					<span class="glyphicon glyphicon-pencil profile-edit-icon pull-left edit-profile-data-icon" ng-show="showEditButton"></span>
+					<span class="glyphicon glyphicon-pencil profile-edit-icon pull-left edit-profile-data-icon" ng-show="showEditButton" ng-click="allowEditName = true"></span>
 				</div>
 
-				<span class="profile-title pull-left">VP Marketing at VoiceTec</span>
-				<span class="glyphicon glyphicon-pencil pull-left edit-profile-data-icon" ng-show="showEditButton"></span>
+				<div class="profile-title-box pull-left">
+					<span class="profile-title pull-left" ng-hide="allowEditTitle">VP Marketing at VoiceTec</span>
+					<textarea class="form-control edit-profile-title" ng-show="allowEditTitle"></textarea>
+					<span class="glyphicon glyphicon-pencil pull-left edit-profile-data-icon" ng-show="showEditButton" ng-click="allowEditTitle = true"></span>
+				</div>
 
 				<div class="profile-social-links text-center pull-left">
 					<i class="fa fa-twitter social-link"></i>
@@ -34,7 +41,9 @@
 		</div>
 		<br />
 		<section class="text-center">
-			<button class="btn btn-default" ng-click="showEditButton = ! showEditButton">Edit Profile</button>
+			<button class="btn btn-default" ng-click="showEditButton = ! showEditButton" ng-hide="showEditButton">Edit Profile</button>
+			<button class="btn btn-default" ng-show="showEditButton" ng-click="returnViewMode()">Cancel</button>
+			<button class="btn btn-primary" ng-show="showEditButton" ng-click="saveProfile()">Save</button>
 		</section>
 	</section>
 </section>
