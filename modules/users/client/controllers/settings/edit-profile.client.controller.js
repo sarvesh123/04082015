@@ -30,11 +30,11 @@ angular.module('users').controller('EditProfileController', ['$scope', '$http', 
 
     $scope.returnViewMode = function () {
       $scope.showEditButton = $scope.allowEditName = false;
-    }
+    };
 
     $scope.saveProfile = function () {
       $scope.returnViewMode();
-    }
+    };
 
   }
 ]);
