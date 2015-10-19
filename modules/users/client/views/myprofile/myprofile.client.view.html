@@ -16,34 +16,59 @@
 				<div class="profile-name-box pull-left">
 					<div class="profile-name-cover pull-left">
 						<h3 class="profile-name" ng-hide="allowEditName">{{user.firstName}} {{user.lastName}}</h3>
-						<div ng-show="allowEditName">
-							<input ng-model="user.firstName" type="text" class="form-control">
-							<input ng-model="user.lastName" type="text" class="form-control">
+						<div ng-show="allowEditName" style="margin-left: -5px;">
+							<input ng-model="user.firstName" type="text" class="form-control edit-first-name">
+							<input ng-model="user.lastName" type="text" class="form-control edit-last-name">
 						</div>
 					</div>
-					<span class="glyphicon glyphicon-pencil profile-edit-icon pull-left edit-profile-data-icon" ng-show="showEditButton" ng-click="allowEditName = true"></span>
+					<span class="glyphicon glyphicon-pencil profile-edit-icon pull-left edit-profile-data-icon" ng-show="editNameButton" ng-click="editProfileName()"></span>
 				</div>
 
 				<div class="profile-title-box pull-left">
 					<span class="profile-title pull-left" ng-hide="allowEditTitle">VP Marketing at VoiceTec</span>
-					<textarea class="form-control edit-profile-title" ng-show="allowEditTitle"></textarea>
-					<span class="glyphicon glyphicon-pencil pull-left edit-profile-data-icon" ng-show="showEditButton" ng-click="allowEditTitle = true"></span>
+					<div ng-show="allowEditTitle">
+						<textarea class="form-control edit-profile-title"></textarea>
+					</div>
+					<span class="glyphicon glyphicon-pencil pull-left edit-profile-data-icon" ng-show="editTitleButton" ng-click="editProfileTitle()"></span>
 				</div>
 
 				<div class="profile-social-links text-center pull-left">
-					<i class="fa fa-twitter social-link"></i>
-					<i class="fa fa-linkedin-square social-link"></i>
-					<i class="fa fa-google-plus social-link"></i>
-					<i class="fa fa-facebook-official social-link"></i>
-					&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-pencil edit-profile-data-icon" ng-show="showEditButton"></span>
+					<div ng-hide="allowEditSocial">
+						<i class="fa fa-twitter social-link"></i>
+						<i class="fa fa-linkedin-square social-link"></i>
+						<i class="fa fa-google-plus social-link"></i>
+						<i class="fa fa-facebook-official social-link"></i>
+						<span class="glyphicon glyphicon-pencil edit-profile-data-icon" ng-show="editSocialButton" ng-click="editProfileSocial()"></span>
+					</div>
+					<div ng-show="allowEditSocial">
+						
+						<div class="profile-social-edit">
+							<i class="fa fa-twitter social-link pull-left"></i>
+							<input type="text" class="form-control pull-right" ng-model="user.twitterProfileLink">
+						</div>
+						
+						<div class="profile-social-edit">
+							<i class="fa fa-linkedin-square social-link pull-left"></i>
+							<input type="text" class="form-control pull-right" ng-model="user.linkedinProfileLink">
+						</div>
+
+						<div class="profile-social-edit">
+							<i class="fa fa-google-plus social-link pull-left"></i>
+							<input type="text" class="form-control pull-right" ng-model="user.googlePlusSocialLink">
+						</div>
+
+						<div class="profile-social-edit">
+							<i class="fa fa-facebook-official social-link pull-left"></i>
+							<input type="text" class="form-control pull-right" ng-model="user.facebookProfileLink">
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
-		<br />
 		<section class="text-center">
-			<button class="btn btn-default" ng-click="showEditButton = ! showEditButton" ng-hide="showEditButton">Edit Profile</button>
-			<button class="btn btn-default" ng-show="showEditButton" ng-click="returnViewMode()">Cancel</button>
-			<button class="btn btn-primary" ng-show="showEditButton" ng-click="saveProfile()">Save</button>
+			<button class="btn btn-default" ng-click="goEditMode()" ng-hide="editMode">Edit Profile</button>
+			<button class="btn btn-default" ng-show="editMode" ng-click="returnViewMode()">Cancel</button>
+			<button class="btn btn-primary" ng-show="editMode" ng-click="saveProfile()">Save</button>
 		</section>
 	</section>
 </section>

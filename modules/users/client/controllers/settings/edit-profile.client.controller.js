@@ -29,12 +29,34 @@ angular.module('users').controller('EditProfileController', ['$scope', '$http', 
     };
 
     $scope.returnViewMode = function () {
-      $scope.showEditButton = $scope.allowEditName = false;
+      $scope.editMode = $scope.editTitleButton = $scope.editNameButton = $scope.editSocialButton = false;
+      $scope.allowEditTitle = $scope.allowEditName = $scope.allowEditSocial = false;
     };
 
     $scope.saveProfile = function () {
       $scope.returnViewMode();
     };
 
+    $scope.editProfileTitle = function () {
+      $scope.allowEditTitle = true;
+      $scope.editTitleButton = false;
+    };
+
+    $scope.editProfileName = function () {
+      $scope.allowEditName = true;
+      $scope.editNameButton = false;
+    };
+
+    $scope.editProfileSocial = function () {
+      $scope.allowEditSocial = true;
+      $scope.editSocialButton = false;
+    };
+
+    $scope.goEditMode = function () {
+      $scope.editMode = true;
+      $scope.editTitleButton = true;
+      $scope.editNameButton = true;
+      $scope.editSocialButton = true;
+    };
   }
 ]);
