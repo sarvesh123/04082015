@@ -33,10 +33,6 @@ angular.module('users').controller('EditProfileController', ['$scope', '$http', 
       $scope.allowEditTitle = $scope.allowEditName = $scope.allowEditSocial = false;
     };
 
-    $scope.saveProfile = function () {
-      $scope.returnViewMode();
-    };
-
     $scope.editProfileTitle = function () {
       $scope.allowEditTitle = true;
       $scope.editTitleButton = false;

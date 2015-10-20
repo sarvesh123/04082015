@@ -25,9 +25,9 @@
 				</div>
 
 				<div class="profile-title-box pull-left">
-					<span class="profile-title pull-left" ng-hide="allowEditTitle">VP Marketing at VoiceTec</span>
+					<span class="profile-title pull-left" ng-hide="allowEditTitle">{{user.title ? user.title : 'Add your title here'}}</span>
 					<div ng-show="allowEditTitle">
-						<textarea class="form-control edit-profile-title"></textarea>
+						<textarea class="form-control edit-profile-title" ng-model="user.title"></textarea>
 					</div>
 					<span class="glyphicon glyphicon-pencil pull-left edit-profile-data-icon" ng-show="editTitleButton" ng-click="editProfileTitle()"></span>
 				</div>
