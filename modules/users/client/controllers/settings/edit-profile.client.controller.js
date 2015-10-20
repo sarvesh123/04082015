@@ -58,5 +58,15 @@ angular.module('users').controller('EditProfileController', ['$scope', '$http', 
       $scope.editNameButton = true;
       $scope.editSocialButton = true;
     };
+
+    $scope.saveProfile = function () {
+      var user = new Users($scope.user);
+      user.$update(function (response) {
+        $scope.returnViewMode();
+      }, function (response) {
+        $scope.error = response.data.message;
+      });
+    };
+
   }
 ]);

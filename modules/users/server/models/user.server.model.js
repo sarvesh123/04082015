@@ -101,7 +101,27 @@ var UserSchema = new Schema({
   },
   resetPasswordExpires: {
     type: Date
-  }
+  },
+  title: {
+    type: String,
+    trim: true
+  },
+  twitter: {
+    type: String,
+    trim: true
+  },
+  facebook: {
+    type: String,
+    trim: true
+  },
+  googlePlus: {
+    type: String,
+    trim: true
+  },
+  linkedIn: {
+    type: String,
+    trim: true
+  },
 });
 
 /**

@@ -1,4 +1,4 @@
-<section ng-controller="EditProfileController" ng-init="" style="padding-top: 20px;">
+<section ng-controller="EditProfileController" style="padding-top: 20px;">
 	<h2>Primary Profile</h1>
 
 	<section class="profile">
@@ -34,32 +34,32 @@
 
 				<div class="profile-social-links text-center pull-left">
 					<div ng-hide="allowEditSocial">
-						<i class="fa fa-twitter social-link"></i>
-						<i class="fa fa-linkedin-square social-link"></i>
-						<i class="fa fa-google-plus social-link"></i>
-						<i class="fa fa-facebook-official social-link"></i>
+						<a href="{{user.twitter}}" target="_blank"><i class="fa fa-twitter social-link"></i></a>
+						<a href="{{user.linkedIn}}" target="_blank"><i class="fa fa-linkedin-square social-link"></i></a>
+						<a href="{{user.googlePlus}}" target="_blank"><i class="fa fa-google-plus social-link"></i></a>
+						<a href="{{user.facebook}}" target="_blank"><i class="fa fa-facebook-official social-link"></i></a>
 						<span class="glyphicon glyphicon-pencil edit-profile-data-icon" ng-show="editSocialButton" ng-click="editProfileSocial()"></span>
 					</div>
 					<div ng-show="allowEditSocial">
-						
+
 						<div class="profile-social-edit">
 							<i class="fa fa-twitter social-link pull-left"></i>
-							<input type="text" class="form-control pull-right" ng-model="user.twitterProfileLink">
+							<input type="text" class="form-control pull-right" ng-model="user.twitter">
 						</div>
-						
+
 						<div class="profile-social-edit">
 							<i class="fa fa-linkedin-square social-link pull-left"></i>
-							<input type="text" class="form-control pull-right" ng-model="user.linkedinProfileLink">
+							<input type="text" class="form-control pull-right" ng-model="user.linkedIn">
 						</div>
 
 						<div class="profile-social-edit">
 							<i class="fa fa-google-plus social-link pull-left"></i>
-							<input type="text" class="form-control pull-right" ng-model="user.googlePlusSocialLink">
+							<input type="text" class="form-control pull-right" ng-model="user.googlePlus">
 						</div>
 
 						<div class="profile-social-edit">
 							<i class="fa fa-facebook-official social-link pull-left"></i>
-							<input type="text" class="form-control pull-right" ng-model="user.facebookProfileLink">
+							<input type="text" class="form-control pull-right" ng-model="user.facebook">
 						</div>
 					</div>
 				</div>
