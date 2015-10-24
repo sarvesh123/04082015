@@ -72,5 +72,12 @@ angular.module('users').controller('EditProfileController', ['$scope', '$http', 
         size: size
       });
     };
+
+    $scope.editProfileImage = function (size) {
+      if ($scope.editMode) {
+        $scope.popupProfileImage(size);
+      }
+    };
+
   }
 ]);
