@@ -85,5 +85,10 @@ angular.module('users').controller('ChangeProfilePictureController', ['$scope', 
       }
       return new Blob([new Uint8Array(array)], {type: mimeString});
     };
+
+    $scope.cancelUpload = function () {
+      $rootScope.$modalInstance.dismiss();
+    };
+
   }
 ]);
