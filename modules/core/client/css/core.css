@@ -222,3 +222,7 @@ a:hover .header-profile-image {
   overflow: hidden;
   height: 75px;
 }
+.main-content > section {
+  width: 100%;
+  height: 100%;
+}

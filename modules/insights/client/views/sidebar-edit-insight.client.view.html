@@ -11,9 +11,18 @@
             <button type="button" class="btn btn-primary no-border-radius" ng-click="publish_popup('lg', insight)">Publish</button>
           </div>
 
-          <div class="form-group">
+          <div>
             <img class="edit-img" ng-src="{{authentication.user.profileImageURL}}" alt="{{authentication.user.displayName}}"/><br />
             <span class="edit-profile-name" ng-bind="authentication.user.displayName"></span>
+            <div>{{authentication.user.title}}</div>
+          </div>
+
+          <div ng-hide="allowEditSocial">
+            <a href="{{user.twitter}}" target="_blank"><i class="fa fa-twitter social-link"></i></a>
+            <a href="{{user.linkedIn}}" target="_blank"><i class="fa fa-linkedin-square social-link"></i></a>
+            <a href="{{user.googlePlus}}" target="_blank"><i class="fa fa-google-plus social-link"></i></a>
+            <a href="{{user.facebook}}" target="_blank"><i class="fa fa-facebook-official social-link"></i></a>
+            <span class="glyphicon glyphicon-pencil edit-profile-data-icon" ng-show="editSocialButton" ng-click="editProfileSocial()"></span>
           </div>
 
           <div class="form-group" style="padding: 0 15px;">
