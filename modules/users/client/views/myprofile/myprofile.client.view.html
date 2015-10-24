@@ -9,7 +9,7 @@
 			</div>
 
 			<div class="profile-image-box text-center">
-				<img src="{{user.profileImageURL}}" alt="profile photo" class="profile-image">
+				<img src="{{authentication.user.profileImageURL}}" alt="profile photo" class="profile-image" ng-click="popupProfileImage('lg')">
 			</div>
 
 			<div class="profile-data">
@@ -72,3 +72,4 @@
 		</section>
 	</section>
 </section>
+

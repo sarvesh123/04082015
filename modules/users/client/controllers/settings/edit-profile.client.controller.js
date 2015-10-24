@@ -1,10 +1,12 @@
 'use strict';
 
-angular.module('users').controller('EditProfileController', ['$scope', '$http', '$location', 'Users', 'Authentication',
-  function ($scope, $http, $location, Users, Authentication) {
+angular.module('users').controller('EditProfileController', ['$scope', '$http', '$location', 'Users', 'Authentication', '$modal', 
+  function ($scope, $http, $location, Users, Authentication, $modal) {
     $scope.user = Authentication.user;
 
     $scope.showEditButton = $scope.allowEditName = false;
+
+    $scope.authentication = Authentication;
 
     // Update a user profile
     $scope.updateUserProfile = function (isValid) {
@@ -12,7 +14,6 @@ angular.module('users').controller('EditProfileController', ['$scope', '$http', 
 
       if (!isValid) {
         $scope.$broadcast('show-errors-check-validity', 'userForm');
-
         return false;
       }
 
@@ -20,7 +21,6 @@ angular.module('users').controller('EditProfileController', ['$scope', '$http', 
 
       user.$update(function (response) {
         $scope.$broadcast('show-errors-reset', 'userForm');
-
         $scope.success = true;
         Authentication.user = response;
       }, function (response) {
@@ -64,5 +64,17 @@ angular.module('users').controller('EditProfileController', ['$scope', '$http', 
       });
     };
 
+    $scope.popupProfileImage = function (size) {
+      var modalInstance = $modal.open({
+        animation: $scope.animationsEnabled,
+        templateUrl: 'modules/users/client/views/myprofile/popup-profile-image-user.client.view.html',
+        controller: 'ChangeProfilePictureController',
+        size: size
+      });
+
+      modalInstance.result.then(function (selectedItem) {
+        $scope.selected = selectedItem;
+      });
+    };
   }
 ]);
