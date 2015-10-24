@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('users').controller('EditProfileController', ['$scope', '$http', '$location', 'Users', 'Authentication', '$modal', 
-  function ($scope, $http, $location, Users, Authentication, $modal) {
+angular.module('users').controller('EditProfileController', ['$scope', '$http', '$location', 'Users', 'Authentication', '$modal', '$rootScope', 
+  function ($scope, $http, $location, Users, Authentication, $modal, $rootScope) {
     $scope.user = Authentication.user;
 
     $scope.showEditButton = $scope.allowEditName = false;
@@ -65,15 +65,11 @@ angular.module('users').controller('EditProfileController', ['$scope', '$http', 
     };
 
     $scope.popupProfileImage = function (size) {
-      var modalInstance = $modal.open({
+      $rootScope.$modalInstance = $modal.open({
         animation: $scope.animationsEnabled,
         templateUrl: 'modules/users/client/views/myprofile/popup-profile-image-user.client.view.html',
         controller: 'ChangeProfilePictureController',
         size: size
-      });
-
-      modalInstance.result.then(function (selectedItem) {
-        $scope.selected = selectedItem;
       });
     };
   }

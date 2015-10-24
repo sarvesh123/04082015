@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('users').controller('ChangeProfilePictureController', ['$scope', '$timeout', '$window', 'Authentication', 'FileUploader', '$modalStack', 
-  function ($scope, $timeout, $window, Authentication, FileUploader, $modalStack) {
+angular.module('users').controller('ChangeProfilePictureController', ['$scope', '$timeout', '$window', 'Authentication', 'FileUploader', '$rootScope', 
+  function ($scope, $timeout, $window, Authentication, FileUploader, $rootScope) {
     $scope.user = Authentication.user;
     $scope.imageURL = $scope.user.profileImageURL;
     $scope.newImage = '';
@@ -43,6 +43,8 @@ angular.module('users').controller('ChangeProfilePictureController', ['$scope', 
 
       // Clear upload buttons
       $scope.cancelUpload();
+
+      $rootScope.$modalInstance.close();
     };
 
     // Called after the user has failed to uploaded a new picture
