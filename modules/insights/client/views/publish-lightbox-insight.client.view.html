@@ -1,5 +1,5 @@
-<button ng-click="close()" type="button" class="close" aria-label="Close" style="padding: 15px;"><span aria-hidden="true">&times;</span></button>
-<div style="padding:50px;">
+<button ng-click="cancel()" type="button" class="close" aria-label="Close" style="padding: 15px;"><span aria-hidden="true">&times;</span></button>
+<div style="padding:50px;" ng-controller="SocialAccountsController">
     <div class="center-block">
         <div class="form-group form-inline">
             <section class="col-xs-3">Link to share:</section>
@@ -18,36 +18,51 @@
      </div>
 
     <form>
-
         <div class="form-group">
             <label for="content">Share Insighter via:</label>
-            <p ng-hide="showEditor">{{insight.content | limitTo:100}}<span ng-if="insight.content.length > 100">... more</span></p>
+            <p ng-hide="showEditor"><span id="shareMessage">{{insight.content | limitTo:100}}</span><span ng-if="insight.content.length > 100">... more</span></p>
             <input type="text" ng-show="showEditor" class="form-control preview-insight-box" id="content" ng-bind="insight.content" value="{{insight.content | limitTo:100}}">
             <a href="" ng-click="$root.showEditor = true">edit</a>
         </div>
 
         <!--the original view-->
         <section ng-controller="InsightsController" ng-init="getUrlData()" class="embed">
-            <section class="col-xs-4 full-height"><img src="{{response.data.images[0].url}}" class="embed-thumb"></section>
+            <input type="hidden" id="origUrl" value="{{insight.orig_url}}">
+            <section class="col-xs-4 full-height"><img src="{{response.data.images[0].url}}" class="embed-thumb" id="picture"></section>
             <section class="col-xs-8 embed-text">
-                <header class="embed-title">{{response.data.title}}</header>
-                <p class="embed-desc">{{response.data.description}}</p>
-            </section>
+                <header class="embed-title" id="title">{{response.data.title}}</header>
+                <p class="embed-desc" id="urlDescription">{{response.data.description}}</p>
+             </section>
         </section>
 
-        <div class="popup-social-share">
-            <div>
-                <div class="col-xs-3 social-box"><input type="checkbox" class="popup-social-checkbox">&nbsp;<i class="fa fa-linkedin-square fa-3x"></i><span class="popup-social-text">LinkedIn</span></div>
-                <div class="col-xs-3 social-box"><input type="checkbox" class="popup-social-checkbox">&nbsp;<i class="fa fa-twitter-square fa-3x"></i><span class="popup-social-text">Twitter</span></div>
-                <div class="col-xs-3 social-box"><input type="checkbox" class="popup-social-checkbox">&nbsp;<i class="fa fa-google-plus fa-3x"></i><span class="popup-social-text">Google</span></div>
-                <div class="col-xs-3 social-box"><input type="checkbox" class="popup-social-checkbox">&nbsp;<i class="fa fa-facebook-official fa-3x"></i><span class="popup-social-text">Facebook</span></div>
+            <div class="popup-social-share"> 
+                <div>
+                    <div class="col-xs-3 social-box" ng-show="isConnectedSocialAccount('linkedin')">
+                        <input type="checkbox" class="popup-social-checkbox" ng-model="sn.linkedin">
+                        &nbsp;<i class="fa fa-linkedin-square fa-3x"></i>
+                        <span class="popup-social-text">LinkedIn</span>
+                    </div>
+                    <div class="col-xs-3 social-box" ng-show="isConnectedSocialAccount('twitter')">
+                        <input type="checkbox" class="popup-social-checkbox" ng-model="sn.twitter">
+                        &nbsp;<i class="fa fa-twitter-square fa-3x"></i>
+                        <span class="popup-social-text">Twitter</span>
+                    </div>
+                    <div class="col-xs-3 social-box" ng-show="isConnectedSocialAccount('google')">
+                        <input type="checkbox" class="popup-social-checkbox" ng-model="sn.google">
+                        &nbsp;<i class="fa fa-google-plus fa-3x"></i>
+                        <span class="popup-social-text">Google</span>
+                    </div>
+                    <div class="col-xs-3 social-box" ng-show="isConnectedSocialAccount('facebook')">
+                        <input type="checkbox" class="popup-social-checkbox" ng-model="sn.facebook">
+                        &nbsp;<i class="fa fa-facebook-official fa-3x"></i>
+                        <span class="popup-social-text">Facebook</span>
+                    </div>
+                </div>
             </div>
-        </div>
-        <br /><br />
-        <div class="form-group text-right">
-          <button type="button" class="btn btn-default no-border-radius site-button-width" ng-click="close()">Cancel</button>
-          <button type="button" class="btn btn-primary no-border-radius site-button-width" ng-click="update()">Publish</button>
-        </div>
-
+            <br /><br />
+            <div class="form-group text-right">
+              <button type="button" class="btn btn-default no-border-radius site-button-width" ng-click="cancel()">Cancel</button>
+              <button type="button" class="btn btn-primary no-border-radius site-button-width" ng-click="publish(insight)">Publish</button>
+            </div>
     </form>
 </div>

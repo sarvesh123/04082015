@@ -25,23 +25,23 @@ module.exports = {
     title: defaultEnvConfig.app.title + ' - Development Environment'
   },
   facebook: {
-    clientID: process.env.FACEBOOK_ID || 'APP_ID',
-    clientSecret: process.env.FACEBOOK_SECRET || 'APP_SECRET',
+    clientID: '538955022924020' || 'APP_ID',
+    clientSecret: '047488cc0bb2939d2b9a87ed5989dc09' || 'APP_SECRET',
     callbackURL: '/api/auth/facebook/callback'
   },
   twitter: {
-    clientID: process.env.TWITTER_KEY || 'CONSUMER_KEY',
-    clientSecret: process.env.TWITTER_SECRET || 'CONSUMER_SECRET',
+    clientID: 'NzOwcF3zeWvrKnm8XSRerPPiv' || 'CONSUMER_KEY',
+    clientSecret: 'CagrHMRPloDzu9fYYdqib0sWGbOrTG5EgcfB3OXJbCMEOpnUok' || 'CONSUMER_SECRET',
     callbackURL: '/api/auth/twitter/callback'
   },
   google: {
-    clientID: process.env.GOOGLE_ID || 'APP_ID',
-    clientSecret: process.env.GOOGLE_SECRET || 'APP_SECRET',
+    clientID: '569058583197-ah4jfu8j3mok6leh7qlbv3mih8l54fve.apps.googleusercontent.com' || 'APP_ID',
+    clientSecret: 'y-sjsQjYE-BBM-gp7t1O3KWL' || 'APP_SECRET',
     callbackURL: '/api/auth/google/callback'
   },
   linkedin: {
-    clientID: process.env.LINKEDIN_ID || 'APP_ID',
-    clientSecret: process.env.LINKEDIN_SECRET || 'APP_SECRET',
+    clientID: '759aa9o0uxab22' || 'APP_ID',
+    clientSecret: 'TQR29oEWOpsFArxw' || 'APP_SECRET',
     callbackURL: '/api/auth/linkedin/callback'
   },
   github: {

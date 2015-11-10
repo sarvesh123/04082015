@@ -17,7 +17,10 @@ module.exports = {
         'public/lib/angular-ui-utils/ui-utils.js',
         'public/lib/angular-bootstrap/ui-bootstrap-tpls.js',
         'public/lib/angular-file-upload/angular-file-upload.js',
-        'public/lib/ng-img-crop/compile/minified/ng-img-crop.js'
+        'public/lib/ng-img-crop/compile/minified/ng-img-crop.js',
+        'public/fb/fb.js',
+        'public/lib/ng-twitter-api/dist/ng-twitter-api.min.js',
+        'public/lib/jsSHA/src/sha1.js'
       ],
       tests: ['public/lib/angular-mocks/angular-mocks.js']
     },
