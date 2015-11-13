@@ -1,10 +1,12 @@
 'use strict';
 
-angular.module('users').controller('EditProfileController', ['$scope', '$http', '$location', 'Users', 'Authentication',
-  function ($scope, $http, $location, Users, Authentication) {
+angular.module('users').controller('EditProfileController', ['$scope', '$http', '$location', 'Users', 'Authentication', '$modal', '$rootScope', 
+  function ($scope, $http, $location, Users, Authentication, $modal, $rootScope) {
     $scope.user = Authentication.user;
 
     $scope.showEditButton = $scope.allowEditName = false;
+
+    $scope.authentication = Authentication;
 
     $scope.myImage='';
     $scope.myCroppedImage='';
@@ -15,7 +17,6 @@ angular.module('users').controller('EditProfileController', ['$scope', '$http', 
 
       if (!isValid) {
         $scope.$broadcast('show-errors-check-validity', 'userForm');
-
         return false;
       }
 
@@ -23,7 +24,6 @@ angular.module('users').controller('EditProfileController', ['$scope', '$http', 
 
       user.$update(function (response) {
         $scope.$broadcast('show-errors-reset', 'userForm');
-
         $scope.success = true;
         Authentication.user = response;
       }, function (response) {
@@ -67,19 +67,20 @@ angular.module('users').controller('EditProfileController', ['$scope', '$http', 
       });
     };
 
-    $scope.handleFileSelect = function(evt) {
-
-      console.log(evt.target.result);
-
-      var file = evt.currentTarget.files[0];
-      var reader = new FileReader();
-      reader.onload = function (evt) {
-        $scope.$apply(function($scope){
-          $scope.myImage = evt.target.result;
-        });
-      };
-      reader.readAsDataURL(file);
+    $scope.popupProfileImage = function (size) {
+      $rootScope.$modalInstance = $modal.open({
+        animation: $scope.animationsEnabled,
+        templateUrl: 'modules/users/client/views/myprofile/popup-profile-image-user.client.view.html',
+        controller: 'ChangeProfilePictureController',
+        size: size
+      });
     };
-    angular.element(document.querySelector('#fileInput')).on('change', $scope.handleFileSelect);
+
+    $scope.editProfileImage = function (size) {
+      if ($scope.editMode) {
+        $scope.popupProfileImage(size);
+  }
+    };
+
   }
 ]);

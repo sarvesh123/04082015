@@ -88,7 +88,16 @@
 .edit-last-name {
   width: 190px;
 }
-
+.center-input {
+  margin: auto;
+}
+.cropArea {
+  background: #E4E4E4;
+  overflow: hidden;
+  width: 320px;
+  height: 180px;
+  margin: 0 auto;
+}
 
 @media (min-width: 992px) {
   .nav-users {

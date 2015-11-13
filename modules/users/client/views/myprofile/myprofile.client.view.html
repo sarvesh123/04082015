@@ -1,7 +1,7 @@
-<section ng-controller="EditProfileController" style="padding-top: 20px;">
+<section ng-controller="EditProfileController" style="padding-top: 20px;" class="col-lg-6">
   <h2>Primary Profile</h1>
 
-  <section class="profile">
+	<section class="profile col-md-6">
     <div class="profile-box bg-gray">
       <div class="profile-box-header">
         <span class="small-site-logo pull-left">Insighter</span>
@@ -9,7 +9,7 @@
       </div>
 
       <div class="profile-image-box text-center">
-        <img src="{{user.profileImageURL}}" alt="profile photo" class="profile-image">
+				<img src="{{authentication.user.profileImageURL}}" alt="profile photo" class="profile-image" ng-click="editProfileImage('lg')">
       </div>
 
       <div class="profile-data">
@@ -72,13 +72,67 @@
     </section>
   </section>
 
-  <section style="width: 50%;float: left;padding: 20px;">
-    <div>Select an image file: <input type="file" id="fileInput" /></div>
-    <div class="cropArea">
-      <img-crop image="myImage" result-image="myCroppedImage"></img-crop>
-    </div>
-    <div>Cropped Image:</div>
-    <div><img ng-src="{{myCroppedImage}}" /></div>
-  </section>
+	<div class="col-md-6" ng-show="editMode">
+		<h3>Connect to Social Networks</h3>
+        <div>
+            <div class="col-xs-3 social-box">
+            	<i class="fa fa-linkedin-square fa-3x"></i>
+            	<span class="popup-social-text">LinkedIn</span>
+            </div>
+            
+            <div class="col-xs-3 social-box">
+            	<i class="fa fa-twitter-square fa-3x"></i>
+            	<span class="popup-social-text">Twitter</span>
+            </div>
 
+            <div class="col-xs-3 social-box">
+            	<i class="fa fa-google-plus fa-3x"></i>
+            	<span class="popup-social-text">Google</span>
+            </div>
+
+            <div class="col-xs-3 social-box">
+            	<i class="fa fa-facebook-official fa-3x"></i>
+            	<span class="popup-social-text">Facebook</span>
+            </div>
+        </div>
+    </div>
+
+  </section>
+<section class="row col-lg-6" ng-controller="SocialAccountsController">
+  <h3 class="col-md-12 text-center" ng-show="hasConnectedAdditionalSocialAccounts()">Connected social accounts:</h3>
+  <div class="col-md-12 text-center">
+    <div ng-repeat="(providerName, providerData) in user.additionalProvidersData" class="social-account-container">
+      <img ng-src="/modules/users/client/img/buttons/{{providerName}}.png">
+      <a class="btn btn-danger btn-remove-account" ng-click="removeUserSocialAccount(providerName)">
+        <i class="glyphicon glyphicon-trash"></i>
+      </a>
+    </div>
+  </div>
+  <h3 class="col-md-12 text-center" ng-show="hasConnectedAdditionalSocialAccounts()">Unconnected social accounts:</h3>
+  <div class="col-md-12 text-center">
+    <div class="social-account-container" ng-hide="isConnectedSocialAccount('facebook')">
+      <img ng-src="/modules/users/client/img/buttons/facebook.png">
+      <a class="btn btn-success btn-remove-account" href="/api/auth/facebook" target="_self">
+        <i class="glyphicon glyphicon-plus"></i>
+      </a>
+    </div>
+    <div class="social-account-container" ng-hide="isConnectedSocialAccount('twitter')">
+      <img ng-src="/modules/users/client/img/buttons/twitter.png">
+      <a class="btn btn-success btn-remove-account" href="/api/auth/twitter" target="_self">
+        <i class="glyphicon glyphicon-plus"></i>
+      </a>
+    </div>
+    <div class="social-account-container" ng-hide="isConnectedSocialAccount('google')">
+      <img ng-src="/modules/users/client/img/buttons/google.png">
+      <a class="btn btn-success btn-remove-account" href="/api/auth/google" target="_self">
+        <i class="glyphicon glyphicon-plus"></i>
+      </a>
+    </div>
+    <div class="social-account-container" ng-hide="isConnectedSocialAccount('linkedin')">
+      <img ng-src="/modules/users/client/img/buttons/linkedin.png">
+      <a class="btn btn-success btn-remove-account" href="/api/auth/linkedin" target="_self">
+        <i class="glyphicon glyphicon-plus"></i>
+      </a>
+    </div>
+  </div>
 </section>

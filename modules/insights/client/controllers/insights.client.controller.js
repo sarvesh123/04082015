@@ -112,11 +112,11 @@ angular.module('insights').controller('InsightsController', ['$scope', '$statePa
         var modalInstance = $modal.open({
           animation: $scope.animationsEnabled,
           templateUrl: 'modules/insights/client/views/publish-lightbox-insight.client.view.html',
-          controller: 'ModalInstanceCtrl',
+          controller: 'InsightsPublishController',
           size: size,
           resolve: {
             insight: function () {
-              return $scope.insight;
+              return insight;
             }
           }
         });

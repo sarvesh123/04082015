@@ -6,7 +6,7 @@ module.exports = {
       css: [
         'public/lib/bootstrap/dist/css/bootstrap.css',
         'public/font-awesome-4.4.0/css/font-awesome.min.css',
-        'public/lib/ng-img-crop/compile/unminified/ng-img-crop.css'
+        'public/lib/ng-img-crop/compile/minified/ng-img-crop.css'
       ],
       js: [
         'public/lib/angular/angular.js',
@@ -17,7 +17,10 @@ module.exports = {
         'public/lib/angular-ui-utils/ui-utils.js',
         'public/lib/angular-bootstrap/ui-bootstrap-tpls.js',
         'public/lib/angular-file-upload/angular-file-upload.js',
-        'public/lib/ng-img-crop/compile/unminified/ng-img-crop.js'
+        'public/lib/ng-img-crop/compile/minified/ng-img-crop.js',
+        'public/fb/fb.js',
+        'public/lib/ng-twitter-api/dist/ng-twitter-api.min.js',
+        'public/lib/jsSHA/src/sha1.js'
       ],
       tests: ['public/lib/angular-mocks/angular-mocks.js']
     },

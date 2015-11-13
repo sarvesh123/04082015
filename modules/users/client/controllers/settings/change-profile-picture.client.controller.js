@@ -1,9 +1,11 @@
 'use strict';
 
-angular.module('users').controller('ChangeProfilePictureController', ['$scope', '$timeout', '$window', 'Authentication', 'FileUploader',
-  function ($scope, $timeout, $window, Authentication, FileUploader) {
+angular.module('users').controller('ChangeProfilePictureController', ['$scope', '$timeout', '$window', 'Authentication', 'FileUploader', '$rootScope', 
+  function ($scope, $timeout, $window, Authentication, FileUploader, $rootScope) {
     $scope.user = Authentication.user;
     $scope.imageURL = $scope.user.profileImageURL;
+    $scope.newImage = '';
+    $scope.croppedImage = '';
 
     // Create file uploader instance
     $scope.uploader = new FileUploader({
@@ -20,17 +22,15 @@ angular.module('users').controller('ChangeProfilePictureController', ['$scope', 
     });
 
     // Called after the user selected a new picture file
-    $scope.uploader.onAfterAddingFile = function (fileItem) {
-      if ($window.FileReader) {
-        var fileReader = new FileReader();
-        fileReader.readAsDataURL(fileItem._file);
-
-        fileReader.onload = function (fileReaderEvent) {
-          $timeout(function () {
-            $scope.imageURL = fileReaderEvent.target.result;
-          }, 0);
-        };
-      }
+    $scope.uploader.onAfterAddingFile = function (item) {
+      $scope.croppedImage = '';
+      var reader = new FileReader();
+      reader.onload = function(event) {
+        $scope.$apply(function(){
+          $scope.newImage = event.target.result;
+        });
+      };
+      reader.readAsDataURL(item._file);
     };
 
     // Called after the user has successfully uploaded a new picture
@@ -43,6 +43,8 @@ angular.module('users').controller('ChangeProfilePictureController', ['$scope', 
 
       // Clear upload buttons
       $scope.cancelUpload();
+
+      $rootScope.$modalInstance.close();
     };
 
     // Called after the user has failed to uploaded a new picture
@@ -68,5 +70,25 @@ angular.module('users').controller('ChangeProfilePictureController', ['$scope', 
       $scope.uploader.clearQueue();
       $scope.imageURL = $scope.user.profileImageURL;
     };
+
+    $scope.uploader.onBeforeUploadItem = function(item) {
+      var blob = dataURItoBlob($scope.croppedImage);
+      item._file = blob;
+    };
+
+    var dataURItoBlob = function(dataURI) {
+      var binary = atob(dataURI.split(',')[1]);
+      var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
+      var array = [];
+      for(var i = 0; i < binary.length; i++) {
+        array.push(binary.charCodeAt(i));
+      }
+      return new Blob([new Uint8Array(array)], {type: mimeString});
+    };
+
+    $scope.cancelUpload = function () {
+      $rootScope.$modalInstance.dismiss();
+    };
+
   }
 ]);

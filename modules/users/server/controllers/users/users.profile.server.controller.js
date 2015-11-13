@@ -8,7 +8,8 @@ var _ = require('lodash'),
   path = require('path'),
   errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller')),
   mongoose = require('mongoose'),
-  User = mongoose.model('User');
+  User = mongoose.model('User'),
+  config = require(path.resolve('./config/config'));
 
 /**
  * Update user details
@@ -93,4 +94,50 @@ exports.changeProfilePicture = function (req, res) {
  */
 exports.me = function (req, res) {
   res.json(req.user || null);
+};
+
+var userByID = function (id) {
+  return User.findOne({
+    _id: id
+  }).exec(function (err, user) {
+    if (err) {
+      return err;
+    } else {
+      return user;
+    }
+  });
+};
+
+exports.tweet = function (req, res) {
+
+    console.log(req.body);
+
+    var userId = req.body.data.userId;
+    var user = userByID(userId).then( function (data) {
+      //Get this data from your twitter apps dashboard
+      var tweetConfig = {
+          "consumerKey": config.twitter.clientID,
+          "consumerSecret": config.twitter.clientSecret,
+          "accessToken": data.additionalProvidersData.twitter.token,
+          "accessTokenSecret": data.additionalProvidersData.twitter.tokenSecret,
+          "callBackUrl": config.twitter.callbackURL
+      }
+
+      var tweet = req.body.data.tweet;
+      var Twitter = require('twitter-node-client').Twitter;
+      var twitter = new Twitter(tweetConfig);
+
+      //Callback functions
+      var error = function (err, response, body) {
+        res.send(err);
+      };
+      var success = function (data) {
+        res.send(data);
+      };
+      twitter.postTweet({ status: tweet}, error, success);
+    });
+};
+
+var postTweet = function (tweet, tweetConfig) {
+  
 };
