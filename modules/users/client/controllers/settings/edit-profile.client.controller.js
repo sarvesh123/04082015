@@ -6,6 +6,9 @@ angular.module('users').controller('EditProfileController', ['$scope', '$http', 
 
     $scope.showEditButton = $scope.allowEditName = false;
 
+    $scope.myImage='';
+    $scope.myCroppedImage='';
+
     // Update a user profile
     $scope.updateUserProfile = function (isValid) {
       $scope.success = $scope.error = null;
@@ -64,5 +67,19 @@ angular.module('users').controller('EditProfileController', ['$scope', '$http', 
       });
     };
 
+    $scope.handleFileSelect = function(evt) {
+
+      console.log(evt.target.result);
+
+      var file = evt.currentTarget.files[0];
+      var reader = new FileReader();
+      reader.onload = function (evt) {
+        $scope.$apply(function($scope){
+          $scope.myImage = evt.target.result;
+        });
+      };
+      reader.readAsDataURL(file);
+    };
+    angular.element(document.querySelector('#fileInput')).on('change', $scope.handleFileSelect);
   }
 ]);

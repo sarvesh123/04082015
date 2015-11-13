@@ -1,74 +1,84 @@
 <section ng-controller="EditProfileController" style="padding-top: 20px;">
-	<h2>Primary Profile</h1>
+  <h2>Primary Profile</h1>
 
-	<section class="profile">
-		<div class="profile-box bg-gray">
-			<div class="profile-box-header">
-				<span class="small-site-logo pull-left">Insighter</span>
-				<span class="glyphicon glyphicon-menu-hamburger pull-right" style="margin: 10px 20px 10px"></span>
-			</div>
+  <section class="profile">
+    <div class="profile-box bg-gray">
+      <div class="profile-box-header">
+        <span class="small-site-logo pull-left">Insighter</span>
+        <span class="glyphicon glyphicon-menu-hamburger pull-right" style="margin: 10px 20px 10px"></span>
+      </div>
 
-			<div class="profile-image-box text-center">
-				<img src="{{user.profileImageURL}}" alt="profile photo" class="profile-image">
-			</div>
+      <div class="profile-image-box text-center">
+        <img src="{{user.profileImageURL}}" alt="profile photo" class="profile-image">
+      </div>
 
-			<div class="profile-data">
-				<div class="profile-name-box pull-left">
-					<div class="profile-name-cover pull-left">
-						<h3 class="profile-name" ng-hide="allowEditName">{{user.firstName}} {{user.lastName}}</h3>
-						<div ng-show="allowEditName" style="margin-left: -5px;">
-							<input ng-model="user.firstName" type="text" class="form-control edit-first-name">
-							<input ng-model="user.lastName" type="text" class="form-control edit-last-name">
-						</div>
-					</div>
-					<span class="glyphicon glyphicon-pencil profile-edit-icon pull-left edit-profile-data-icon" ng-show="editNameButton" ng-click="editProfileName()"></span>
-				</div>
+      <div class="profile-data">
+        <div class="profile-name-box pull-left">
+          <div class="profile-name-cover pull-left">
+            <h3 class="profile-name" ng-hide="allowEditName">{{user.firstName}} {{user.lastName}}</h3>
+            <div ng-show="allowEditName" style="margin-left: -5px;">
+              <input ng-model="user.firstName" type="text" class="form-control edit-first-name">
+              <input ng-model="user.lastName" type="text" class="form-control edit-last-name">
+            </div>
+          </div>
+          <span class="glyphicon glyphicon-pencil profile-edit-icon pull-left edit-profile-data-icon" ng-show="editNameButton" ng-click="editProfileName()"></span>
+        </div>
 
-				<div class="profile-title-box pull-left">
-					<span class="profile-title pull-left" ng-hide="allowEditTitle">{{user.title ? user.title : 'Add your title here'}}</span>
-					<div ng-show="allowEditTitle">
-						<textarea class="form-control edit-profile-title" ng-model="user.title"></textarea>
-					</div>
-					<span class="glyphicon glyphicon-pencil pull-left edit-profile-data-icon" ng-show="editTitleButton" ng-click="editProfileTitle()"></span>
-				</div>
+        <div class="profile-title-box pull-left">
+          <span class="profile-title pull-left" ng-hide="allowEditTitle">{{user.title ? user.title : 'Add your title here'}}</span>
+          <div ng-show="allowEditTitle">
+            <textarea class="form-control edit-profile-title" ng-model="user.title"></textarea>
+          </div>
+          <span class="glyphicon glyphicon-pencil pull-left edit-profile-data-icon" ng-show="editTitleButton" ng-click="editProfileTitle()"></span>
+        </div>
 
-				<div class="profile-social-links text-center pull-left">
-					<div ng-hide="allowEditSocial">
-						<a href="{{user.twitter}}" target="_blank"><i class="fa fa-twitter social-link"></i></a>
-						<a href="{{user.linkedIn}}" target="_blank"><i class="fa fa-linkedin-square social-link"></i></a>
-						<a href="{{user.googlePlus}}" target="_blank"><i class="fa fa-google-plus social-link"></i></a>
-						<a href="{{user.facebook}}" target="_blank"><i class="fa fa-facebook-official social-link"></i></a>
-						<span class="glyphicon glyphicon-pencil edit-profile-data-icon" ng-show="editSocialButton" ng-click="editProfileSocial()"></span>
-					</div>
-					<div ng-show="allowEditSocial">
+        <div class="profile-social-links text-center pull-left">
+          <div ng-hide="allowEditSocial">
+            <a href="{{user.twitter}}" target="_blank"><i class="fa fa-twitter social-link"></i></a>
+            <a href="{{user.linkedIn}}" target="_blank"><i class="fa fa-linkedin-square social-link"></i></a>
+            <a href="{{user.googlePlus}}" target="_blank"><i class="fa fa-google-plus social-link"></i></a>
+            <a href="{{user.facebook}}" target="_blank"><i class="fa fa-facebook-official social-link"></i></a>
+            <span class="glyphicon glyphicon-pencil edit-profile-data-icon" ng-show="editSocialButton" ng-click="editProfileSocial()"></span>
+          </div>
+          <div ng-show="allowEditSocial">
 
-						<div class="profile-social-edit">
-							<i class="fa fa-twitter social-link pull-left"></i>
-							<input type="text" class="form-control pull-right" ng-model="user.twitter">
-						</div>
+            <div class="profile-social-edit">
+              <i class="fa fa-twitter social-link pull-left"></i>
+              <input type="text" class="form-control pull-right" ng-model="user.twitter">
+            </div>
 
-						<div class="profile-social-edit">
-							<i class="fa fa-linkedin-square social-link pull-left"></i>
-							<input type="text" class="form-control pull-right" ng-model="user.linkedIn">
-						</div>
+            <div class="profile-social-edit">
+              <i class="fa fa-linkedin-square social-link pull-left"></i>
+              <input type="text" class="form-control pull-right" ng-model="user.linkedIn">
+            </div>
 
-						<div class="profile-social-edit">
-							<i class="fa fa-google-plus social-link pull-left"></i>
-							<input type="text" class="form-control pull-right" ng-model="user.googlePlus">
-						</div>
+            <div class="profile-social-edit">
+              <i class="fa fa-google-plus social-link pull-left"></i>
+              <input type="text" class="form-control pull-right" ng-model="user.googlePlus">
+            </div>
 
-						<div class="profile-social-edit">
-							<i class="fa fa-facebook-official social-link pull-left"></i>
-							<input type="text" class="form-control pull-right" ng-model="user.facebook">
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<section class="text-center">
-			<button class="btn btn-default" ng-click="goEditMode()" ng-hide="editMode">Edit Profile</button>
-			<button class="btn btn-default" ng-show="editMode" ng-click="returnViewMode()">Cancel</button>
-			<button class="btn btn-primary" ng-show="editMode" ng-click="saveProfile()">Save</button>
-		</section>
-	</section>
+            <div class="profile-social-edit">
+              <i class="fa fa-facebook-official social-link pull-left"></i>
+              <input type="text" class="form-control pull-right" ng-model="user.facebook">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <section class="text-center">
+      <button class="btn btn-default" ng-click="goEditMode()" ng-hide="editMode">Edit Profile</button>
+      <button class="btn btn-default" ng-show="editMode" ng-click="returnViewMode()">Cancel</button>
+      <button class="btn btn-primary" ng-show="editMode" ng-click="saveProfile()">Save</button>
+    </section>
+  </section>
+
+  <section style="width: 50%;float: left;padding: 20px;">
+    <div>Select an image file: <input type="file" id="fileInput" /></div>
+    <div class="cropArea">
+      <img-crop image="myImage" result-image="myCroppedImage"></img-crop>
+    </div>
+    <div>Cropped Image:</div>
+    <div><img ng-src="{{myCroppedImage}}" /></div>
+  </section>
+
 </section>
