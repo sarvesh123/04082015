@@ -43,6 +43,7 @@ angular.module('users').controller('SocialAccountsController', ['$scope', '$http
     };
 
     $scope.publish = function (insight) {
+      var user = $scope.user;
       var accessToken = user.additionalProvidersData.facebook.accessToken;
       var shareMessage = getInnerHTML('#shareMessage');
       var link = getVal('#origUrl');
@@ -58,8 +59,7 @@ angular.module('users').controller('SocialAccountsController', ['$scope', '$http
         facebookShare( accessToken, shareMessage, link, picture, description );
       }
       if ( $scope.sn.twitter ) {
-        var tweet = title + description;
-        tweet = tweet.substring(0, 140);
+        var tweet = shareMessage.substring(0, 140);
         twitterShare( user._id, tweet );
       }
       if ( $scope.sn.google ) {

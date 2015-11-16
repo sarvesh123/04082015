@@ -9,7 +9,8 @@ var _ = require('lodash'),
   errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller')),
   mongoose = require('mongoose'),
   User = mongoose.model('User'),
-  config = require(path.resolve('./config/config'));
+  config = require(path.resolve('./config/config')),
+  Twitter = require('twitter-node-client').Twitter;
 
 /**
  * Update user details
@@ -110,8 +111,6 @@ var userByID = function (id) {
 
 exports.tweet = function (req, res) {
 
-    console.log(req.body);
-
     var userId = req.body.data.userId;
     var user = userByID(userId).then( function (data) {
       //Get this data from your twitter apps dashboard
@@ -121,10 +120,9 @@ exports.tweet = function (req, res) {
           "accessToken": data.additionalProvidersData.twitter.token,
           "accessTokenSecret": data.additionalProvidersData.twitter.tokenSecret,
           "callBackUrl": config.twitter.callbackURL
-      }
+      };
 
       var tweet = req.body.data.tweet;
-      var Twitter = require('twitter-node-client').Twitter;
       var twitter = new Twitter(tweetConfig);
 
       //Callback functions
@@ -136,8 +134,4 @@ exports.tweet = function (req, res) {
       };
       twitter.postTweet({ status: tweet}, error, success);
     });
-};
-
-var postTweet = function (tweet, tweetConfig) {
-  
 };
