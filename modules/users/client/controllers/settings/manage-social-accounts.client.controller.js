@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('users').controller('SocialAccountsController', ['$scope', '$http', 'Authentication', 
-  function ($scope, $http, Authentication) {
+angular.module('users').controller('SocialAccountsController', ['$scope', '$http', 'Authentication', '$window',
+  function ($scope, $http, Authentication, $window) {
     $scope.user = Authentication.user;
 
     $scope.sn = {
@@ -56,18 +56,19 @@ angular.module('users').controller('SocialAccountsController', ['$scope', '$http
         //linkedinShare();
       }
       if ( $scope.sn.facebook ) {
-        facebookShare( accessToken, shareMessage, link, picture, description );
+        $scope.facebookShare( accessToken, shareMessage, link, picture, description );
       }
       if ( $scope.sn.twitter ) {
         var tweet = shareMessage.substring(0, 140);
-        twitterShare( user._id, tweet );
+        $scope.twitterShare( user._id, tweet );
       }
       if ( $scope.sn.google ) {
         //googleShare();
       }
     };
 
-    var facebookShare = function ( accessToken, shareMessage, link, picture, description ) {
+    $scope.facebookShare = function ( accessToken, shareMessage, link, picture, description ) {
+      var FB = $window.FB;
       FB.api(
         "/me/feed",
         "POST",
@@ -78,15 +79,17 @@ angular.module('users').controller('SocialAccountsController', ['$scope', '$http
             "description": description
         },
         function (response) {
-          console.log(response);
           if (response && !response.error) {
-            /* handle the result */
+            $scope.fbShareMsg = 'Shared on FaceBook Successfully';
+          }
+          if (response && response.error) {
+            $scope.fbShareMsg = response.error.message;
           }
         }
       );
     };
 
-    var twitterShare = function (userId, tweet) {
+    $scope.twitterShare = function (userId, tweet) {
       var url = '/api/users/tweet';
       var data = { 
         userId: userId,
@@ -96,9 +99,9 @@ angular.module('users').controller('SocialAccountsController', ['$scope', '$http
         data: data,
 
       }).success(function (response) {
-        console.log(response);
+        $scope.twShareMsg = 'Shared on Twitter Successfully';
       }).error(function (response) {
-        console.log(response);
+        $scope.twShareMsg = response.data.errors.message;
       });
     };
 
@@ -120,5 +123,5 @@ angular.module('users').controller('SocialAccountsController', ['$scope', '$http
       return elementText;
     };
 
-  }
+    }
 ]);
